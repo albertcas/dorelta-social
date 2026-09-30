@@ -1,0 +1,61 @@
+/*
+ * Composición común de las piezas de Instagram. Los tokens de color vienen de
+ * `comun.css`, que es copia literal de la del repo de la aplicación.
+ *
+ * Cada pieza es un `.pieza` con `data-salida="nombre.png"`: `render.mjs`
+ * captura cada una por elemento, con su tamaño exacto.
+ */
+body { background: #333; display: grid; gap: 40px; padding: 40px; width: max-content; }
+
+.pieza { position: relative; overflow: hidden; background: var(--navy); color: #fff; }
+.pieza.post { width: 1080px; height: 1350px; }
+.pieza.story { width: 1080px; height: 1920px; }
+
+/* Una insinuación de agua detrás del móvil, no un degradado sobre el titular. */
+.pieza::after { content: ""; position: absolute; right: -180px; top: 18%; width: 900px; height: 900px; border-radius: 50%; background: var(--teal); opacity: 0.1; filter: blur(60px); }
+
+.contenido { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; padding: 76px 72px 68px; }
+.pieza .marca img { width: 54px; height: 54px; }
+.pieza .marca span { font-size: 34px; }
+
+.antetitulo { color: var(--teal); font-weight: 500; letter-spacing: 0.01em; }
+.pieza h1 { font-weight: 600; letter-spacing: -0.03em; line-height: 1.08; }
+.pieza h1 em { font-style: normal; color: var(--teal); }
+
+.puntos { list-style: none; display: grid; }
+.puntos li { position: relative; padding-left: 30px; color: rgba(255,255,255,0.82); line-height: 1.35; }
+.puntos li::before { content: ""; position: absolute; left: 0; top: 0.46em; width: 11px; height: 11px; border-radius: 99px; background: var(--teal); }
+
+.llamada { color: var(--teal); font-weight: 500; letter-spacing: -0.01em; }
+
+.pie { margin-top: auto; padding-top: 44px; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.pie .web { font-weight: 600; letter-spacing: -0.02em; }
+.pie .cola { text-align: right; color: rgba(255,255,255,0.62); line-height: 1.45; }
+
+/* El marco del móvil: un objeto oscuro, nunca una pantalla dibujada con divs.
+   El recorte (`overflow`) es lo que deja usar capturas más altas que el hueco. */
+.pieza .movil { position: absolute; z-index: 1; overflow: hidden; border: 9px solid oklch(0.21 0.02 260); background: oklch(0.21 0.02 260); border-radius: 58px; line-height: 0; }
+.pieza .movil::before { content: ""; position: absolute; top: 13px; left: 50%; transform: translateX(-50%); width: 96px; height: 9px; border-radius: 99px; background: rgba(255,255,255,0.25); z-index: 1; }
+.pieza .movil img { width: 100%; display: block; border-radius: 49px 49px 0 0; }
+
+/* ---- Post 1080 × 1350: texto a la izquierda, móvil a la derecha ---------- */
+.post .antetitulo { margin-top: auto; font-size: 26px; max-width: 486px; }
+.post h1 { margin-top: 18px; font-size: 56px; max-width: 486px; }
+.post .puntos { margin-top: 36px; gap: 16px; max-width: 490px; }
+.post .puntos li { font-size: 26px; }
+.post .llamada { margin-top: 32px; font-size: 25px; max-width: 470px; }
+.post .pie .web { font-size: 40px; }
+.post .pie .cola { font-size: 21px; }
+.post .movil { width: 424px; right: 60px; top: 196px; }
+
+/* ---- Story 1080 × 1920: el texto manda arriba y el móvil sale por abajo --- */
+.story .antetitulo { margin-top: 74px; font-size: 34px; }
+.story h1 { margin-top: 22px; font-size: 76px; max-width: 900px; }
+.story .puntos { margin-top: 52px; gap: 22px; max-width: 880px; }
+.story .puntos li { font-size: 34px; padding-left: 40px; }
+.story .puntos li::before { width: 14px; height: 14px; }
+.story .llamada { margin-top: 44px; font-size: 33px; }
+.story .pie { margin-top: 52px; }
+.story .pie .web { font-size: 52px; }
+.story .pie .cola { font-size: 27px; }
+.story .movil { width: 636px; left: 50%; transform: translateX(-50%); top: 1100px; }

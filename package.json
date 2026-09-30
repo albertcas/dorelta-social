@@ -1,0 +1,12 @@
+{
+  "name": "dorelta-social",
+  "private": true,
+  "type": "module",
+  "description": "Piezas de Instagram de Dorelta: fuente HTML, generador e imágenes publicadas.",
+  "scripts": {
+    "render": "node render.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "^1.55.0"
+  }
+}

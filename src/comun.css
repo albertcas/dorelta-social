@@ -1,0 +1,37 @@
+/*
+ * Els MATEIXOS tokens que `src/app/globals.css`, copiats en oklch tal com hi
+ * són. No són colors «semblants» triats a ull: si la portada canvia de
+ * paleta, aquí es veu de seguida que la media ha quedat despenjada.
+ */
+:root {
+  --navy: oklch(0.28 0.07 255);
+  --teal: oklch(0.7 0.13 200);
+  --bg: oklch(0.985 0.004 240);
+  --fg: oklch(0.22 0.03 255);
+  --muted-fg: oklch(0.48 0.03 255);
+  --border: oklch(0.91 0.012 240);
+  --accent: oklch(0.945 0.035 205);
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Geist, ui-sans-serif, system-ui, sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* L'emblema sobre navy: el PNG té parts navy que hi desapareixen, igual que a
+   l'aplicació, i per això va sobre una placa blanca (vegeu `LogoMark`). */
+.marca { display: inline-flex; align-items: center; gap: 10px; }
+.marca img { width: 34px; height: 34px; border-radius: 28%; background: #fff; padding: 2px; }
+.marca span { font-size: 21px; font-weight: 600; letter-spacing: -0.02em; color: #fff; }
+.marca span i { font-style: normal; color: var(--teal); }
+
+/* El marc del mòbil, mateixa recepta que `PhoneFrame`: un objecte fosc en els
+   dos temes, mai una pantalla dibuixada amb divs. */
+.mobil { position: relative; border: 5px solid oklch(0.21 0.02 260); background: oklch(0.21 0.02 260); border-radius: 30px; line-height: 0; }
+.mobil::before { content: ""; position: absolute; top: 7px; left: 50%; transform: translateX(-50%); width: 52px; height: 5px; border-radius: 99px; background: rgba(255,255,255,0.25); z-index: 1; }
+.mobil img { width: 100%; border-radius: 25px; display: block; }
