@@ -45,7 +45,7 @@ for (const nombre of salidas) {
     const movil = p.querySelector(".movil")?.getBoundingClientRect();
     if (!movil) return [];
     const tocan = (a, b) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
-    return Array.from(p.querySelectorAll(".antetitulo, h1, .puntos li, .llamada, .pie span, .marca span"))
+    return Array.from(p.querySelectorAll(".antetitulo, h1, .subtitulo, .arroba, .puntos li, .llamada, .pie span, .marca span"))
       .filter((el) => tocan(el.getBoundingClientRect(), movil))
       .map((el) => `${el.className || el.tagName.toLowerCase()}: «${el.textContent.trim().slice(0, 42)}…»`);
   }, sel);
@@ -55,7 +55,7 @@ for (const nombre of salidas) {
   const fuera = await page.evaluate((s) => {
     const p = document.querySelector(s);
     const marco = p.getBoundingClientRect();
-    return Array.from(p.querySelectorAll(".marca, .antetitulo, h1, .subtitulo, .puntos li, .llamada, .captura, .pie span"))
+    return Array.from(p.querySelectorAll(".marca, .antetitulo, h1, .subtitulo, .arroba, .puntos li, .llamada, .captura, .pie span"))
       .filter((el) => {
         const r = el.getBoundingClientRect();
         return r.top < marco.top || r.bottom > marco.bottom || r.left < marco.left || r.right > marco.right;

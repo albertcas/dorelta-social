@@ -80,3 +80,10 @@ body { background: #333; display: grid; gap: 40px; padding: 40px; width: max-con
 .story.con-captura .subtitulo { margin-top: 32px; font-size: 36px; max-width: 900px; }
 .story.con-captura .captura { margin-top: 90px; }
 .story.con-captura .pie { margin-top: auto; padding-bottom: 150px; }
+
+/* ---- El nombre de la cuenta, para las piezas que piden seguirla ---------- */
+.arroba { align-self: flex-start; margin-top: 56px; padding: 22px 40px; border-radius: 99px; background: var(--teal); color: var(--navy); font-size: 54px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; }
+.story .subtitulo { margin-top: 32px; font-size: 36px; max-width: 900px; color: rgba(255,255,255,0.82); line-height: 1.35; text-wrap: balance; }
+.story.seguir .antetitulo { margin-top: 150px; }
+.story.seguir h1 { font-size: 92px; }
+.story.seguir .movil { top: 1130px; }
