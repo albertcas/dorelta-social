@@ -51,6 +51,19 @@ for (const nombre of salidas) {
   }, sel);
   if (choques.length > 0) throw new Error(`En ${nombre} hay texto por debajo del móvil:\n  ${choques.join("\n  ")}`);
 
+  // Nada fuera del marco: `overflow: hidden` recorta el final sin avisar.
+  const fuera = await page.evaluate((s) => {
+    const p = document.querySelector(s);
+    const marco = p.getBoundingClientRect();
+    return Array.from(p.querySelectorAll(".marca, .antetitulo, h1, .subtitulo, .puntos li, .llamada, .captura, .pie span"))
+      .filter((el) => {
+        const r = el.getBoundingClientRect();
+        return r.top < marco.top || r.bottom > marco.bottom || r.left < marco.left || r.right > marco.right;
+      })
+      .map((el) => el.className || el.tagName.toLowerCase());
+  }, sel);
+  if (fuera.length > 0) throw new Error(`En ${nombre} se sale del marco: ${fuera.join(", ")}`);
+
   const fichero = path.join(salida, nombre);
   await page.locator(sel).screenshot({ path: fichero });
   const kb = Math.round(statSync(fichero).size / 1024);

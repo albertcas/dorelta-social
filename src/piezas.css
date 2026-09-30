@@ -19,7 +19,7 @@ body { background: #333; display: grid; gap: 40px; padding: 40px; width: max-con
 .pieza .marca span { font-size: 34px; }
 
 .antetitulo { color: var(--teal); font-weight: 500; letter-spacing: 0.01em; }
-.pieza h1 { font-weight: 600; letter-spacing: -0.03em; line-height: 1.08; }
+.pieza h1 { font-weight: 600; letter-spacing: -0.03em; line-height: 1.08; text-wrap: balance; }
 .pieza h1 em { font-style: normal; color: var(--teal); }
 
 .puntos { list-style: none; display: grid; }
@@ -59,3 +59,24 @@ body { background: #333; display: grid; gap: 40px; padding: 40px; width: max-con
 .story .pie .web { font-size: 52px; }
 .story .pie .cola { font-size: 27px; }
 .story .movil { width: 636px; left: 50%; transform: translateX(-50%); top: 1100px; }
+
+/* ---- Variante «captura»: el texto arriba y un recorte de pantalla debajo --
+   Para capturas de escritorio, que no caben en un móvil. El recorte se
+   declara en píxeles de la captura original (2560 de ancho) con --x, --y,
+   --w y --h, y se escala solo al ancho de la tarjeta. */
+.captura { --ancho: 936px; width: var(--ancho); height: calc(var(--ancho) * var(--h) / var(--w)); overflow: hidden; border-radius: 22px; border: 1px solid rgba(255,255,255,0.14); background: var(--bg); line-height: 0; box-shadow: 0 30px 80px rgba(0,0,0,0.35); }
+.captura img { display: block; max-width: none; width: calc(var(--ancho) * 2560 / var(--w)); margin-left: calc(var(--ancho) * var(--x) / var(--w) * -1); margin-top: calc(var(--ancho) * var(--y) / var(--w) * -1); }
+
+.con-captura .subtitulo { color: rgba(255,255,255,0.82); line-height: 1.35; text-wrap: balance; }
+.con-captura .captura { margin-top: auto; }
+.con-captura .pie { margin-top: 0; }
+
+.post.con-captura .antetitulo { margin-top: 56px; max-width: none; }
+.post.con-captura h1 { font-size: 62px; max-width: 900px; }
+.post.con-captura .subtitulo { margin-top: 22px; font-size: 27px; max-width: 860px; }
+
+.story.con-captura .antetitulo { margin-top: 150px; }
+.story.con-captura h1 { font-size: 80px; }
+.story.con-captura .subtitulo { margin-top: 32px; font-size: 36px; max-width: 900px; }
+.story.con-captura .captura { margin-top: 90px; }
+.story.con-captura .pie { margin-top: auto; padding-bottom: 150px; }
