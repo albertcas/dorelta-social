@@ -68,3 +68,16 @@
 .story.piloto .accion { margin-top: 70px; }
 .story.piloto .accion .boton { padding: 30px 46px; font-size: 50px; }
 .story.piloto .accion .nota { font-size: 27px; }
+
+/* Calles con cifras de monitor en vez de números de calle: la columna crece
+   para que quepan «76 %» o «4 sem.» sin partirse. */
+.calles.metricas .calle { grid-template-columns: 260px 1fr auto; }
+.calles.metricas .num { color: #fff; }
+.calles.metricas .num small { font-size: 0.45em; font-weight: 500; letter-spacing: -0.01em; color: var(--teal); margin-left: 6px; }
+.calles.metricas .nombre { color: rgba(255,255,255,0.9); }
+.calles.metricas .detalle { color: rgba(255,255,255,0.5); text-align: right; }
+.post.piloto .calles.metricas .detalle { font-size: 23px; }
+.story.piloto .calles.metricas .detalle { font-size: 28px; }
+.aclaracion { color: rgba(255,255,255,0.42); }
+.post.piloto .aclaracion { margin-top: 16px; font-size: 20px; }
+.story.piloto .aclaracion { margin-top: 20px; font-size: 25px; }

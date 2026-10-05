@@ -55,7 +55,7 @@ for (const nombre of salidas) {
   const fuera = await page.evaluate((s) => {
     const p = document.querySelector(s);
     const marco = p.getBoundingClientRect();
-    return Array.from(p.querySelectorAll(".marca, .antetitulo, .etiqueta, .calles, .lista, .accion, h1, .subtitulo, .arroba, .puntos li, .llamada, .captura, .pie span"))
+    return Array.from(p.querySelectorAll(".marca, .antetitulo, .etiqueta, .calles, .lista, .accion, .aclaracion, h1, .subtitulo, .arroba, .puntos li, .llamada, .captura, .pie span"))
       .filter((el) => {
         const r = el.getBoundingClientRect();
         return r.top < marco.top || r.bottom > marco.bottom || r.left < marco.left || r.right > marco.right;
