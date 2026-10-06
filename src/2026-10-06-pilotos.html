@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Dorelta · seguimos buscando clubs piloto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+<link rel="stylesheet" href="piezas.css">
+<link rel="stylesheet" href="piloto.css">
+<style>
+  /* Seis historias y el mismo carrusel en el feed. Tres composiciones:
+     calles (portada), móvil (texto + pantalla) y tarjeta (texto + recorte). */
+  .piloto .cabecera { display: flex; align-items: center; justify-content: space-between; }
+  .piloto .paso { color: rgba(255,255,255,0.45); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; font-weight: 500; }
+  .calles .calle .estado.lleno { border: 1px solid var(--teal); background: var(--teal); color: var(--navy); }
+  .lista li span small { display: block; margin-top: 4px; font-size: 0.78em; color: rgba(255,255,255,0.55); }
+  .captura.tarjeta { border-radius: 26px; }
+  .nota-captura { color: rgba(255,255,255,0.6); font-weight: 500; }
+
+  /* ---------- historias 1080 × 1920 ---------- */
+  .story.piloto .paso { font-size: 28px; }
+  .story.piloto h1 { font-size: 96px; }
+  .story.piloto .lista { margin-top: 56px; }
+  .story.piloto .lista li { min-height: 132px; padding: 18px 0; font-size: 38px; }
+  .story.piloto .lista li b { font-size: 72px; }
+  .story.piloto .nota-captura { margin-top: auto; font-size: 28px; }
+  .story.piloto .nota-captura + .captura { margin-top: 22px; }
+  .story.piloto .captura.abajo { margin-top: auto; }
+  .story.piloto.con-movil .contenido { padding-bottom: 0; }
+  .story.piloto.con-movil h1 { font-size: 88px; }
+  .story.piloto.con-movil .movil { position: absolute; z-index: 1; width: 620px; left: 50%; transform: translateX(-50%); top: 1120px; border-width: 10px; border-radius: 64px; }
+  .story.piloto.con-movil .movil img { border-radius: 54px 54px 0 0; }
+  .story.piloto.con-movil .accion { margin-top: 56px; }
+
+  /* ---------- carrusel del feed 1080 × 1350 ---------- */
+  .post.piloto .paso { font-size: 24px; }
+  .post.piloto.con-movil .etiqueta { margin-top: auto; font-size: 22px; }
+  .post.piloto.con-movil h1 { margin-top: 26px; font-size: 56px; max-width: 486px; }
+  .post.piloto.con-movil .subtitulo { margin-top: 22px; font-size: 26px; max-width: 470px; }
+  .post.piloto.con-movil .accion { margin-top: auto; padding-top: 40px; }
+  .post.piloto.con-movil .accion .boton { padding: 20px 32px; font-size: 32px; }
+  .post.piloto.con-movil .movil { position: absolute; z-index: 1; width: 424px; height: 894px; right: 60px; top: 196px; border-width: 9px; border-radius: 58px; }
+  .post.piloto.con-movil .movil img { border-radius: 49px 49px 0 0; }
+  .post.piloto .lista { margin-top: 40px; }
+  .post.piloto .lista li { min-height: 100px; padding: 12px 0; font-size: 29px; }
+  .post.piloto .nota-captura { margin-top: auto; font-size: 22px; }
+  .post.piloto .nota-captura + .captura { margin-top: 16px; }
+  .post.piloto .captura.abajo { margin-top: auto; }
+  .post.piloto .accion.cerca { margin-top: 40px; }
+</style>
+</head>
+<body>
+
+<!-- ============================ HISTORIAS ============================ -->
+
+<div class="pieza story piloto" data-salida="story-1.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">1 / 6</span></div>
+    <span class="etiqueta">Piloto · temporada 2026-27</span>
+    <h1>Seguimos buscando <em>clubs piloto</em>.</h1>
+    <p class="subtitulo">Quedan calles libres. Toca para ver a quién buscamos →</p>
+    <ol class="calles">
+      <li class="calle ocupada"><span class="num">1</span><span class="nombre">El club donde nació</span><span class="estado">En el agua</span></li>
+      <li class="calle"><span class="num">2</span><span class="nombre">¿Tu club?</span><span class="estado">Calle libre</span></li>
+      <li class="calle"><span class="num">3</span><span class="nombre">¿Tu club?</span><span class="estado">Calle libre</span></li>
+      <li class="calle"><span class="num">4</span><span class="nombre">¿Tu club?</span><span class="estado">Calle libre</span></li>
+    </ol>
+    <div class="accion"><span class="boton">dorelta.es/prueba</span><span class="nota">Gratis y<br>sin compromiso</span></div>
+  </div>
+</div>
+
+<div class="pieza story piloto con-movil" data-salida="story-2.png">
+  <span class="movil"><img src="assets/asistencia-calendario.png" alt="" style="margin-top: -400px"></span>
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">2 / 6</span></div>
+    <span class="etiqueta">1 · Para entrenadores</span>
+    <h1>Si entrenas, <em>pruébala con tu grupo</em>.</h1>
+    <p class="subtitulo">Publicas la semana, ves cuántos vienen y sabes cómo les fue el entreno.</p>
+  </div>
+</div>
+
+<div class="pieza story piloto" data-salida="story-3.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">3 / 6</span></div>
+    <span class="etiqueta">2 · Canal directo</span>
+    <h1>Hablas con <em>quien la programa</em>.</h1>
+    <ul class="lista">
+      <li><b>1</b><span>Propones una mejora</span></li>
+      <li><b>2</b><span>Me avisas de un error</span></li>
+      <li><b>3</b><span>Te contesto yo, sin intermediarios</span></li>
+    </ul>
+    <p class="nota-captura">Pedido por los entrenadores, ya en la app:</p>
+    <div class="captura tarjeta" style="--iw: 1170; --x: 70; --y: 1085; --w: 1030; --h: 440"><img src="assets/asistencia-calendario.png" alt=""></div>
+  </div>
+</div>
+
+<div class="pieza story piloto" data-salida="story-4.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">4 / 6</span></div>
+    <span class="etiqueta">3 · Organización del club</span>
+    <h1>El club, <em>fuera del WhatsApp y del Excel</em>.</h1>
+    <p class="subtitulo">Calendario por categorías, asistencia, registros y documentos del club, en un solo sitio.</p>
+    <div class="captura abajo" style="--x: 700; --y: 365; --w: 1700; --h: 955"><img src="assets/calendario.png" alt=""></div>
+  </div>
+</div>
+
+<div class="pieza story piloto" data-salida="story-5.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">5 / 6</span></div>
+    <span class="etiqueta">4 · A quién buscamos</span>
+    <h1>Gente activa, <em>con ideas y un equipo</em>.</h1>
+    <ul class="lista">
+      <li><b>+</b><span>Entrenas o diriges un grupo<small>de banco móvil, fijo o de mar</small></span></li>
+      <li><b>+</b><span>Tu grupo es adulto<small>de momento, las cuentas son para mayores de edad</small></span></li>
+      <li><b>+</b><span>Quieres decir qué falta<small>y verlo construido</small></span></li>
+    </ul>
+    <div class="accion" style="margin-top: 90px"><span class="boton">dorelta.es/prueba</span><span class="nota">Enlace en<br>la bio</span></div>
+  </div>
+</div>
+
+<div class="pieza story piloto con-movil" data-salida="story-6.png">
+  <span class="movil"><img src="assets/inicio-club.png" alt=""></span>
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">6 / 6</span></div>
+    <span class="etiqueta">¿Conoces a alguien?</span>
+    <h1>Pásaselo a <em>un entrenador</em>.</h1>
+    <p class="subtitulo">Si sabes de alguien que lleve un equipo de remo, compártele esta historia o mándale el enlace.</p>
+    <div class="accion"><span class="boton">dorelta.es/prueba</span><span class="nota">Gracias por<br>la difusión</span></div>
+  </div>
+</div>
+
+<!-- ======================= CARRUSEL DEL FEED ======================= -->
+
+<div class="pieza post piloto" data-salida="post-1.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">1 / 6</span></div>
+    <span class="etiqueta">Piloto · temporada 2026-27</span>
+    <h1>Seguimos buscando <em>clubs piloto</em>.</h1>
+    <p class="subtitulo">Quedan calles libres. Desliza para ver a quién buscamos.</p>
+    <ol class="calles">
+      <li class="calle ocupada"><span class="num">1</span><span class="nombre">El club donde nació</span><span class="estado">En el agua</span></li>
+      <li class="calle"><span class="num">2</span><span class="nombre">¿Tu club?</span><span class="estado">Calle libre</span></li>
+      <li class="calle"><span class="num">3</span><span class="nombre">¿Tu club?</span><span class="estado">Calle libre</span></li>
+      <li class="calle"><span class="num">4</span><span class="nombre">¿Tu club?</span><span class="estado">Calle libre</span></li>
+    </ol>
+    <div class="accion"><span class="boton">dorelta.es/prueba</span><span class="nota">Gratis y sin compromiso<br>Desliza →</span></div>
+  </div>
+</div>
+
+<div class="pieza post piloto con-movil" data-salida="post-2.png">
+  <span class="movil"><img src="assets/asistencia-calendario.png" alt=""></span>
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">2 / 6</span></div>
+    <span class="etiqueta">1 · Para entrenadores</span>
+    <h1>Si entrenas, <em>pruébala con tu grupo</em>.</h1>
+    <p class="subtitulo">Publicas la semana, ves cuántos vienen y sabes cómo les fue el entreno.</p>
+    <div class="accion"><span class="boton">dorelta.es/prueba</span></div>
+  </div>
+</div>
+
+<div class="pieza post piloto" data-salida="post-3.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">3 / 6</span></div>
+    <span class="etiqueta" style="margin-top: 56px; font-size: 22px">2 · Canal directo</span>
+    <h1 style="margin-top: 24px; font-size: 72px">Hablas con <em>quien la programa</em>.</h1>
+    <ul class="lista">
+      <li><b>1</b><span>Propones una mejora</span></li>
+      <li><b>2</b><span>Me avisas de un error</span></li>
+      <li><b>3</b><span>Te contesto yo, sin intermediarios</span></li>
+    </ul>
+    <p class="nota-captura">Pedido por los entrenadores, ya en la app:</p>
+    <div class="captura tarjeta" style="--ancho: 700px; --iw: 1170; --x: 70; --y: 1085; --w: 1030; --h: 440"><img src="assets/asistencia-calendario.png" alt=""></div>
+  </div>
+</div>
+
+<div class="pieza post piloto" data-salida="post-4.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">4 / 6</span></div>
+    <span class="etiqueta" style="margin-top: 56px; font-size: 22px">3 · Organización del club</span>
+    <h1 style="margin-top: 24px; font-size: 68px">El club, <em>fuera del WhatsApp y del Excel</em>.</h1>
+    <p class="subtitulo" style="margin-top: 20px; font-size: 27px; max-width: 880px">Calendario por categorías, asistencia, registros y documentos del club, en un solo sitio.</p>
+    <div class="captura abajo" style="--x: 700; --y: 365; --w: 1700; --h: 955"><img src="assets/calendario.png" alt=""></div>
+  </div>
+</div>
+
+<div class="pieza post piloto" data-salida="post-5.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">5 / 6</span></div>
+    <span class="etiqueta" style="margin-top: 56px; font-size: 22px">4 · A quién buscamos</span>
+    <h1 style="margin-top: 24px; font-size: 76px">Gente activa, <em>con ideas y un equipo</em>.</h1>
+    <ul class="lista">
+      <li><b>+</b><span>Entrenas o diriges un grupo<small>de banco móvil, fijo o de mar</small></span></li>
+      <li><b>+</b><span>Tu grupo es adulto<small>de momento, las cuentas son para mayores de edad</small></span></li>
+      <li><b>+</b><span>Quieres decir qué falta<small>y verlo construido</small></span></li>
+    </ul>
+    <div class="accion" style="margin-top: auto"><span class="boton">dorelta.es/prueba</span><span class="nota">Desliza →</span></div>
+  </div>
+</div>
+
+<div class="pieza post piloto con-movil" data-salida="post-6.png">
+  <span class="movil"><img src="assets/inicio-club.png" alt=""></span>
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">6 / 6</span></div>
+    <span class="etiqueta">¿Conoces a alguien?</span>
+    <h1>Pásaselo a <em>un entrenador</em>.</h1>
+    <p class="subtitulo">Si sabes de alguien que lleve un equipo de remo, compártele este post o mándale el enlace.</p>
+    <div class="accion"><span class="boton">dorelta.es/prueba</span></div>
+  </div>
+</div>
+
+</body>
+</html>
