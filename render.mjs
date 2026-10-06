@@ -45,7 +45,7 @@ for (const nombre of salidas) {
     const movil = p.querySelector(".movil")?.getBoundingClientRect();
     if (!movil) return [];
     const tocan = (a, b) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
-    return Array.from(p.querySelectorAll(".antetitulo, h1, .subtitulo, .arroba, .puntos li, .llamada, .pie span, .marca span"))
+    return Array.from(p.querySelectorAll(".antetitulo, .etiqueta, h1, .subtitulo, .arroba, .accion, .puntos li, .llamada, .pie span, .marca span"))
       .filter((el) => tocan(el.getBoundingClientRect(), movil))
       .map((el) => `${el.className || el.tagName.toLowerCase()}: «${el.textContent.trim().slice(0, 42)}…»`);
   }, sel);

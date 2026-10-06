@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Dorelta · novedades de octubre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+<link rel="stylesheet" href="piezas.css">
+<link rel="stylesheet" href="piloto.css">
+<style>
+  /* Las dos diapositivas con móvil: la cabecera de piloto encima del móvil de
+     las piezas de siempre, con el número de diapositiva arriba a la derecha. */
+  .post.funcion .contenido { padding-top: 72px; }
+  .post.funcion .etiqueta { margin-top: auto; font-size: 22px; }
+  .post.funcion h1 { margin-top: 26px; font-size: 54px; max-width: 486px; }
+  .post.funcion .puntos { margin-top: 30px; gap: 14px; max-width: 470px; }
+  .post.funcion .puntos li { font-size: 25px; }
+  .post.funcion .accion { margin-top: auto; padding-top: 40px; }
+  .post.funcion .accion .boton { padding: 20px 32px; font-size: 32px; }
+  .post.funcion .accion .nota { font-size: 21px; }
+  .post.funcion .movil { width: 424px; height: 894px; right: 60px; top: 196px; }
+  .post.funcion .movil img { border-radius: 49px 49px 0 0; }
+  .calles .calle .nombre small { display: block; margin-top: 6px; font-size: 0.66em; font-weight: 400; color: rgba(255,255,255,0.55); letter-spacing: 0; }
+  .calles.novedades .calle .num { color: var(--teal); }
+  .calles.novedades .calle .nombre { color: #fff; }
+  .calles.novedades .calle .estado { border: 1px solid var(--teal); background: var(--teal); color: var(--navy); }
+  .post.piloto .calles.novedades .calle { height: 132px; }
+  .story.piloto .calles.novedades .calle { height: 168px; }
+</style>
+</head>
+<body>
+
+<div class="pieza post piloto" data-salida="post-1.png">
+  <div class="contenido">
+    <div class="cabecera">
+      <span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span>
+      <span class="paso">1 / 3</span>
+    </div>
+    <span class="etiqueta">Novedades · octubre</span>
+    <h1>Dos novedades <em>en el calendario</em>.</h1>
+    <p class="subtitulo">Ya están en la app, para todos los clubs del piloto.</p>
+    <ol class="calles novedades">
+      <li class="calle"><span class="num">1</span><span class="nombre">Asistencia en el calendario<small>Para quien entrena</small></span><span class="estado">Nuevo</span></li>
+      <li class="calle"><span class="num">2</span><span class="nombre">Entrenos personales<small>Para el remero</small></span><span class="estado">Nuevo</span></li>
+    </ol>
+    <div class="accion">
+      <span class="boton">dorelta.es/prueba</span>
+      <span class="nota">Desliza →</span>
+    </div>
+  </div>
+</div>
+
+<div class="pieza post funcion" data-salida="post-2.png">
+  <span class="movil"><img src="assets/asistencia-calendario.png" alt=""></span>
+  <div class="contenido piloto">
+    <div class="cabecera" style="display: flex; justify-content: space-between; align-items: center">
+      <span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span>
+      <span class="paso" style="font-size: 24px; color: rgba(255,255,255,0.45); letter-spacing: 0.04em">2 / 3</span>
+    </div>
+    <span class="etiqueta">1 · Asistencia en el calendario</span>
+    <h1>Cuántos vienen, <em>sin abrir el entreno</em>.</h1>
+    <ul class="puntos">
+      <li>Cada tarjeta del calendario dice «7 de 10 confirman»</li>
+      <li>Lo ve el entrenador; para los remeros no cambia nada</li>
+      <li>Los borradores no llevan número: aún no se ha preguntado a nadie</li>
+    </ul>
+    <div class="accion">
+      <span class="boton">dorelta.es/prueba</span>
+      <span class="nota">Desliza →</span>
+    </div>
+  </div>
+</div>
+
+<div class="pieza post funcion" data-salida="post-3.png">
+  <span class="movil"><img src="assets/personal-calendario.png" alt=""></span>
+  <div class="contenido piloto">
+    <div class="cabecera" style="display: flex; justify-content: space-between; align-items: center">
+      <span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span>
+      <span class="paso" style="font-size: 24px; color: rgba(255,255,255,0.45); letter-spacing: 0.04em">3 / 3</span>
+    </div>
+    <span class="etiqueta">2 · Entrenos personales</span>
+    <h1>Lo que entrenas por tu cuenta <em>también cuenta</em>.</h1>
+    <ul class="puntos">
+      <li>El remero se apunta su propio entreno: un ergómetro en casa, un rodaje el domingo</li>
+      <li>Solo lo ven él y sus entrenadores</li>
+      <li>Al marcarlo como hecho, a su entrenador le llega un aviso</li>
+    </ul>
+    <div class="accion">
+      <span class="boton">dorelta.es/prueba</span>
+      <span class="nota">Buscamos clubs<br>para el piloto</span>
+    </div>
+  </div>
+</div>
+
+<div class="pieza story piloto" data-salida="story.png">
+  <div class="contenido">
+    <div class="cabecera">
+      <span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span>
+    </div>
+    <span class="etiqueta">Novedades · octubre</span>
+    <h1>Dos novedades <em>en el calendario</em>.</h1>
+    <p class="subtitulo">Ya están en la app, para todos los clubs del piloto.</p>
+    <ol class="calles novedades">
+      <li class="calle"><span class="num">1</span><span class="nombre">Asistencia en el calendario<small>«7 de 10 confirman» en cada tarjeta</small></span><span class="estado">Nuevo</span></li>
+      <li class="calle"><span class="num">2</span><span class="nombre">Entrenos personales<small>Lo que haces por tu cuenta, a la vista de tu entrenador</small></span><span class="estado">Nuevo</span></li>
+    </ol>
+    <div class="accion">
+      <span class="boton">dorelta.es/prueba</span>
+      <span class="nota">Más en el post<br>de hoy</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
