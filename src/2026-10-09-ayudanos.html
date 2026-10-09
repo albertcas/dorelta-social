@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Dorelta · ayúdanos a crecer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+<link rel="stylesheet" href="piezas.css">
+<link rel="stylesheet" href="piloto.css">
+<style>
+  /* Historias de «ayúdanos a crecer». Lo que se pide es un gesto de Instagram
+     (compartir, mencionar, seguir), así que la imagen no es una captura de la
+     app sino el gesto: un icono grande, como el botón que hay que tocar. */
+  .piloto .cabecera { display: flex; align-items: center; justify-content: space-between; }
+  .story.piloto .paso { color: rgba(255,255,255,0.45); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; font-weight: 500; font-size: 28px; }
+  .story.piloto h1 { font-size: 100px; }
+  .calles .calle .estado.toque { border: 1px solid var(--teal); background: var(--teal); color: var(--navy); }
+  .calles.gestos .calle .num { color: var(--teal); }
+  .calles.gestos .calle .nombre { color: #fff; }
+  .story.piloto .calles.gestos .calle { height: 150px; }
+
+  .gesto { margin: auto 0; align-self: center; position: relative; width: 460px; height: 460px; border-radius: 50%; display: grid; place-items: center;
+           background: radial-gradient(circle at 50% 45%, color-mix(in oklch, var(--teal) 30%, transparent), color-mix(in oklch, var(--teal) 8%, transparent) 70%);
+           box-shadow: 0 0 0 2px color-mix(in oklch, var(--teal) 45%, transparent), 0 0 0 40px color-mix(in oklch, var(--teal) 7%, transparent), 0 0 0 80px color-mix(in oklch, var(--teal) 4%, transparent); }
+  .gesto svg { width: 210px; height: 210px; stroke: #fff; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .arroba { align-self: flex-start; padding: 22px 40px; border-radius: 99px; background: var(--teal); color: var(--navy); font-size: 54px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; }
+  .story.piloto .accion { margin-top: 0; }
+  .story.piloto .arroba + .nota-final, .story.piloto .accion + .nota-final { margin-top: 20px; }
+  .nota-final { color: rgba(255,255,255,0.5); font-size: 26px; }
+
+  /* La encuesta la pone una persona con el sticker de Instagram: aquí solo se
+     le deja sitio, sin dibujar nada que se viera si se publicara sin él. */
+  .hueco-encuesta { margin: auto 0; height: 520px; }
+  .opciones { list-style: none; display: grid; gap: 14px; margin-top: 36px; }
+  .opciones li { font-size: 34px; color: rgba(255,255,255,0.8); padding-left: 34px; position: relative; }
+  .opciones li::before { content: ""; position: absolute; left: 0; top: 0.45em; width: 14px; height: 14px; border-radius: 99px; background: var(--teal); }
+</style>
+</head>
+<body>
+
+<div class="pieza story piloto" data-salida="story-1.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">1 / 4</span></div>
+    <span class="etiqueta">Ayúdanos a crecer</span>
+    <h1>Llegar a más clubs <em>depende de ti</em>.</h1>
+    <p class="subtitulo">Dorelta la hace un remero, sin presupuesto para anuncios. Lo que más nos ayuda cuesta un segundo:</p>
+    <ol class="calles gestos">
+      <li class="calle"><span class="num">1</span><span class="nombre">Compártela en tu historia</span><span class="estado toque">Un toque</span></li>
+      <li class="calle"><span class="num">2</span><span class="nombre">Pásasela a un entrenador</span><span class="estado toque">Un toque</span></li>
+      <li class="calle"><span class="num">3</span><span class="nombre">Síguenos</span><span class="estado toque">Un toque</span></li>
+    </ol>
+  </div>
+</div>
+
+<div class="pieza story piloto" data-salida="story-2.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">2 / 4</span></div>
+    <span class="etiqueta">1 · Comparte</span>
+    <h1>Súbela <em>a tu historia</em>.</h1>
+    <p class="subtitulo">Toca el avión de papel y elige «Añadir a tu historia». O mándasela al grupo de tu club.</p>
+    <div class="gesto"><svg viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></div>
+    <p class="nota-final">Cada vez que alguien la comparte, la ven remeros que aún no nos conocen.</p>
+  </div>
+</div>
+
+<div class="pieza story piloto" data-salida="story-3.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">3 / 4</span></div>
+    <span class="etiqueta">2 · Pásasela a quien entrena</span>
+    <h1>¿Conoces a <em>un entrenador</em>?</h1>
+    <p class="subtitulo">Mándale esta historia o menciónalo en la tuya. Buscamos clubs con grupo adulto para el piloto.</p>
+    <div class="gesto"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"/></svg></div>
+    <div class="accion"><span class="boton">dorelta.es/prueba</span><span class="nota">Gratis y<br>sin compromiso</span></div>
+  </div>
+</div>
+
+<div class="pieza story piloto" data-salida="story-4.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">4 / 4</span></div>
+    <span class="etiqueta">3 · Síguenos</span>
+    <h1>Síguenos y <em>no te pierdas nada</em>.</h1>
+    <p class="subtitulo">Cada semana enseñamos lo nuevo de la app, y antes que en ningún otro sitio.</p>
+    <div class="gesto"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg></div>
+    <span class="arroba">@dorelta.es</span>
+    <p class="nota-final">Gracias por empujar. Se nota.</p>
+  </div>
+</div>
+
+<div class="pieza story piloto" data-salida="story-encuesta.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span></div>
+    <span class="etiqueta">Pregunta rápida</span>
+    <h1>¿Dónde publica tu club <em>los entrenos</em>?</h1>
+    <div class="hueco-encuesta"></div>
+    <p class="nota-final">Tu respuesta nos dice qué construir primero.</p>
+  </div>
+</div>
+
+</body>
+</html>
