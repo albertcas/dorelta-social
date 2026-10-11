@@ -68,7 +68,12 @@ for (const nombre of salidas) {
   await page.locator(sel).screenshot({ path: fichero });
   const kb = Math.round(statSync(fichero).size / 1024);
   if (kb < MINIMO_KB) throw new Error(`${nombre} solo pesa ${kb} kB: casi seguro que es una página vacía.`);
-  console.log(`  ✓ ${nombre}  (${kb} kB)`);
+
+  // La API de Instagram solo publica JPEG: el PNG es para revisar, el JPEG es
+  // lo que se publica (`cola.json` apunta a él).
+  const jpeg = fichero.replace(/\.png$/, ".jpg");
+  await page.locator(sel).screenshot({ path: jpeg, type: "jpeg", quality: 92 });
+  console.log(`  ✓ ${nombre} + .jpg  (${kb} kB)`);
 }
 
 await browser.close();
