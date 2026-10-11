@@ -135,6 +135,19 @@ async function publicar(e) {
 /* ------------------------------------------------------------ main */
 
 const args = process.argv.slice(2);
+
+// Prueba de solo lectura: ¿funciona el token y de qué cuenta es? No publica nada.
+if (args.includes("--probar")) {
+  if (!TOKEN) {
+    console.error("Falta IG_TOKEN.");
+    process.exit(1);
+  }
+  const cuenta = await llamar("GET", "me", { fields: "user_id,username,account_type" });
+  console.log(`Token válido: @${cuenta.username} (${cuenta.account_type}), id ${cuenta.user_id}`);
+  const limite = await llamar("GET", "me/content_publishing_limit", { fields: "quota_usage,config" }).catch((e) => ({ error: e.message }));
+  console.log("Cupo de publicación:", JSON.stringify(limite.data?.[0] ?? limite));
+  process.exit(0);
+}
 const soloComprobar = args.includes("--comprobar");
 const solo = args.includes("--solo") ? args[args.indexOf("--solo") + 1] : null;
 

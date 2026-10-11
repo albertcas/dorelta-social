@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
     inputs:
       solo:
-        description: "id de cola.json para publicar ya (vacío = lo que toque por hora)"
+        description: "id de cola.json para publicar ya, «probar» para comprobar el token (vacío = lo que toque por hora)"
         required: false
         default: ""
 
@@ -39,7 +39,9 @@ jobs:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
           SOLO: ${{ inputs.solo }}
         run: |
-          if [ -n "$SOLO" ]; then node scripts/publicar.mjs --solo "$SOLO"; else node scripts/publicar.mjs; fi
+          if [ "$SOLO" = "probar" ]; then node scripts/publicar.mjs --probar
+          elif [ -n "$SOLO" ]; then node scripts/publicar.mjs --solo "$SOLO"
+          else node scripts/publicar.mjs; fi
 
       # Siempre, también si algo falló: lo que sí se publicó tiene que quedar
       # apuntado o la siguiente ejecución lo repetiría.
