@@ -3,6 +3,40 @@
     "id": "2026-10-12-prueba-story-pilotos",
     "cuando": "2026-10-12T01:47:00+02:00",
     "tipo": "story",
-    "imagenes": ["posts/2026-10-06-pilotos/story-1.jpg"]
+    "imagenes": [
+      "posts/2026-10-06-pilotos/story-1.jpg"
+    ]
+  },
+  {
+    "id": "2026-10-13-spam-story",
+    "cuando": "2026-10-13T10:26:00+02:00",
+    "tipo": "story",
+    "imagenes": [
+      "posts/2026-10-13-spam/story.jpg"
+    ]
+  },
+  {
+    "id": "2026-10-13-historico-carrusel",
+    "cuando": "2026-10-13T10:27:00+02:00",
+    "tipo": "carrusel",
+    "imagenes": [
+      "posts/2026-10-08-historico/post-1.jpg",
+      "posts/2026-10-08-historico/post-2.jpg",
+      "posts/2026-10-08-historico/post-3.jpg"
+    ],
+    "texto": "Novedad en Dorelta: el histórico de cada entreno.\n\nHasta ahora la app te decía cómo estaba un entreno. Ahora también te cuenta qué ha pasado en él: quién se apuntó y quién dijo después que no iba, y por qué; quién lo hizo, con qué esfuerzo y si luego lo cambió; y cuándo se canceló o se movió. Todo en una línea de tiempo, día a día.\n\nLo ven los entrenadores y administradores del club. El remero, no.\n\nSeguimos buscando clubs con grupo adulto para el piloto: dorelta.es/prueba (enlace en la bio).\n\n#remo #rowing #clubderemo #entrenadorderemo #remoolimpico",
+    "alt": [
+      "Pestaña «Histórico» de un entreno en Dorelta: una lista con la hora y lo que hizo cada remero, como «Helena Soler · Cambió el esfuerzo a 8» o «Dolors Fabra · No voy · Estudios». Encima, el texto: «Todo lo que pasó en cada entreno».",
+      "Tres puntos: quién se apunta y quién dice que no va con su motivo, quién lo hace y con qué esfuerzo, y las cancelaciones y cambios del entreno. Debajo, dos líneas del histórico con «No voy · Viaje» y «No voy · Trabajo». Encima, el texto: «También las marchas atrás».",
+      "La ficha del entreno en un móvil, con las pestañas «Entreno» e «Histórico». Al lado, el texto: «Lo ve el entrenador. El remero, no»."
+    ]
+  },
+  {
+    "id": "2026-10-13-historico-story",
+    "cuando": "2026-10-13T10:28:00+02:00",
+    "tipo": "story",
+    "imagenes": [
+      "posts/2026-10-08-historico/story.jpg"
+    ]
   }
 ]
