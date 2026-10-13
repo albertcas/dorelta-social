@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Dorelta · revisa el spam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+<link rel="stylesheet" href="piezas.css">
+<link rel="stylesheet" href="piloto.css">
+<style>
+  .piloto .cabecera { display: flex; align-items: center; justify-content: space-between; }
+  .story.piloto h1 { font-size: 96px; }
+  .gesto { margin: auto 0; align-self: center; position: relative; width: 360px; height: 360px; border-radius: 50%; display: grid; place-items: center;
+           background: radial-gradient(circle at 50% 45%, color-mix(in oklch, var(--teal) 30%, transparent), color-mix(in oklch, var(--teal) 8%, transparent) 70%);
+           box-shadow: 0 0 0 2px color-mix(in oklch, var(--teal) 45%, transparent), 0 0 0 40px color-mix(in oklch, var(--teal) 7%, transparent), 0 0 0 80px color-mix(in oklch, var(--teal) 4%, transparent); }
+  .gesto svg { width: 170px; height: 170px; stroke: #fff; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  /* La carpeta donde mirar, como la etiqueta de un cliente de correo. */
+  .carpetas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+  .carpetas span { padding: 12px 24px; border-radius: 99px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: #fff; font-size: 30px; font-weight: 500; }
+  .remitente { display: grid; gap: 12px; justify-items: start; }
+  .remitente small { color: rgba(255,255,255,0.55); font-size: 26px; }
+  .arroba { align-self: flex-start; padding: 22px 40px; border-radius: 99px; background: var(--teal); color: var(--navy); font-size: 50px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; }
+  .nota-final { margin-top: 22px; color: rgba(255,255,255,0.55); font-size: 26px; line-height: 1.4; }
+</style>
+</head>
+<body>
+
+<div class="pieza story piloto" data-salida="story.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span></div>
+    <span class="etiqueta">Entrenadoras y entrenadores</span>
+    <h1>¿Te apuntaste al piloto? <em>Mira en spam</em>.</h1>
+    <p class="subtitulo">Hemos contestado a las solicitudes que nos llegaron. Si no ves nuestro correo, puede estar en:</p>
+    <div class="carpetas"><span>Spam</span><span>Correo no deseado</span><span>Promociones</span></div>
+    <div class="gesto"><svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+    <div class="remitente">
+      <small>Te escribimos desde</small>
+      <span class="arroba">contacto@dorelta.es</span>
+    </div>
+    <p class="nota-final">Márcalo como «No es spam» y los siguientes te llegarán bien.</p>
+  </div>
+</div>
+
+</body>
+</html>
