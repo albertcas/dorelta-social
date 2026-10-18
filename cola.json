@@ -38,5 +38,25 @@
     "imagenes": [
       "posts/2026-10-08-historico/story.jpg"
     ]
+  },
+  {
+    "id": "2026-10-18-ultimas-plazas-post",
+    "cuando": "2026-10-18T19:00:00+02:00",
+    "tipo": "post",
+    "imagenes": [
+      "posts/2026-10-18-ultimas-plazas/post.jpg"
+    ],
+    "texto": "Últimas plazas para el piloto de Dorelta.\n\nSi entrenas a un grupo adulto y quieres organizar la temporada con una herramienta hecha solo para el remo, es el momento: publicar la semana por categorías, saber cuántos vienen, ver cómo les fue el entreno y tener el histórico de cada sesión.\n\nGratis y sin compromiso, con canal directo conmigo para lo que eches en falta.\n\nApúntate en dorelta.es/prueba (enlace en la bio). Y si conoces a un entrenador o entrenadora a quien le encaje, pásale este post.\n\n#remo #rowing #clubderemo #entrenadorderemo #remoolimpico",
+    "alt": [
+      "Ficha de un entreno de Dorelta en un móvil, con la pestaña «Histórico» abierta. Al lado, el texto: «Atención… Últimas plazas para el piloto», con la dirección dorelta.es/prueba."
+    ]
+  },
+  {
+    "id": "2026-10-18-ultimas-plazas-story",
+    "cuando": "2026-10-18T19:30:00+02:00",
+    "tipo": "story",
+    "imagenes": [
+      "posts/2026-10-18-ultimas-plazas/story.jpg"
+    ]
   }
 ]
