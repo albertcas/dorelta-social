@@ -58,5 +58,13 @@
     "imagenes": [
       "posts/2026-10-18-ultimas-plazas/story.jpg"
     ]
+  },
+  {
+    "id": "2026-10-21-resumen-reel",
+    "cuando": "2026-10-21T13:16:00+02:00",
+    "tipo": "reel",
+    "video": "video/2026-10-21-resumen/reel.mp4",
+    "portadaMs": 1000,
+    "texto": "Novedad en Dorelta: el resumen por categoría.\n\nDesde la zona de entrenadores eliges una categoría y unas fechas, y ves a cada remero de un vistazo: entrenos realizados, no realizados y su esfuerzo medio, máximo y mínimo. Lo ordenas como quieras y, si lo necesitas para planificar o para la directiva, lo exportas a Excel en un toque.\n\nSeguimos buscando clubs con grupo adulto para el piloto: dorelta.es/prueba (enlace en la bio).\n\n#remo #rowing #clubderemo #entrenadorderemo #remoolimpico"
   }
 ]

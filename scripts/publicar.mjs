@@ -14,7 +14,7 @@
  * raw.githubusercontent.com, que es la URL pública que pide Instagram. Tienen
  * que ser JPEG: la API rechaza PNG.
  */
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 const RAIZ = process.cwd();
@@ -29,7 +29,7 @@ const MAX_INTENTOS = 3;
 /** Una entrada con más retraso que esto ya no se publica: sería contenido viejo. */
 const MAX_RETRASO_H = 12;
 
-const TIPOS = new Set(["post", "carrusel", "story"]);
+const TIPOS = new Set(["post", "carrusel", "story", "reel"]);
 
 const leer = (f, defecto) => (existsSync(f) ? JSON.parse(readFileSync(f, "utf8")) : defecto);
 const cola = leer(COLA, []);
@@ -55,8 +55,17 @@ function dimensionesJpeg(fichero) {
 function comprobar(e) {
   const fallos = [];
   if (!e.id) fallos.push("falta `id`");
-  if (!TIPOS.has(e.tipo)) fallos.push(`tipo «${e.tipo}» no es post, carrusel ni story`);
+  if (!TIPOS.has(e.tipo)) fallos.push(`tipo «${e.tipo}» no es post, carrusel, story ni reel`);
   if (Number.isNaN(Date.parse(e.cuando)) || !/[+-]\d\d:\d\d$|Z$/.test(e.cuando ?? "")) fallos.push("`cuando` tiene que ser ISO 8601 con zona, p. ej. 2026-10-14T10:00:00+02:00");
+  if (e.tipo === "reel") {
+    // Un reel lleva un vídeo (`video`, MP4 H.264 + AAC, vertical) y nada de imágenes.
+    if (!e.video || !/\.mp4$/i.test(e.video)) fallos.push("un reel lleva `video`, un .mp4");
+    else if (!existsSync(path.join(RAIZ, e.video))) fallos.push(`${e.video}: no existe`);
+    else if (statSync(path.join(RAIZ, e.video)).size > 100 * 1048576) fallos.push(`${e.video}: pasa de 100 MB`);
+    if (e.imagenes?.length) fallos.push("un reel no lleva `imagenes`");
+    if (!e.texto) fallos.push("falta `texto`");
+    return fallos;
+  }
   const imgs = e.imagenes ?? [];
   if (e.tipo === "carrusel" && (imgs.length < 2 || imgs.length > 10)) fallos.push(`un carrusel lleva de 2 a 10 imágenes, y tiene ${imgs.length}`);
   if (e.tipo !== "carrusel" && imgs.length !== 1) fallos.push(`un ${e.tipo} lleva una sola imagen, y tiene ${imgs.length}`);
@@ -98,21 +107,28 @@ async function llamar(metodo, ruta, params = {}) {
 }
 
 const urlPublica = (img) => `https://raw.githubusercontent.com/${REPO}/${RAMA}/${img.split(path.sep).join("/")}`;
+// GitHub sirve los MP4 como application/octet-stream; jsDelivr, como video/mp4.
+// Se fija al commit que se está publicando, así la URL no cambia ni se cachea vieja.
+const urlVideo = (v) => `https://cdn.jsdelivr.net/gh/${REPO}@${process.env.GITHUB_SHA ?? RAMA}/${v.split(path.sep).join("/")}`;
 const espera = (ms) => new Promise((r) => setTimeout(r, ms));
 
 /** Instagram procesa cada contenedor antes de dejar publicarlo. */
-async function esperarContenedor(id) {
-  for (let i = 0; i < 30; i++) {
+async function esperarContenedor(id, intentos = 30) {
+  for (let i = 0; i < intentos; i++) {
     const { status_code } = await llamar("GET", id, { fields: "status_code" });
     if (status_code === "FINISHED") return;
     if (status_code === "ERROR" || status_code === "EXPIRED") throw new Error(`el contenedor ${id} acabó en ${status_code}`);
     await espera(4000);
   }
-  throw new Error(`el contenedor ${id} no terminó de procesarse en 2 minutos`);
+  throw new Error(`el contenedor ${id} no terminó de procesarse en ${Math.round((intentos * 4) / 60)} minutos`);
 }
 
 async function contenedor(e) {
   const alt = (i) => (e.alt?.[i] ? { alt_text: e.alt[i] } : {});
+  if (e.tipo === "reel") {
+    const portada = e.portadaMs != null ? { thumb_offset: String(e.portadaMs) } : {};
+    return (await llamar("POST", "me/media", { media_type: "REELS", video_url: urlVideo(e.video), caption: e.texto, share_to_feed: "true", ...portada })).id;
+  }
   if (e.tipo === "story") return (await llamar("POST", "me/media", { image_url: urlPublica(e.imagenes[0]), media_type: "STORIES" })).id;
   if (e.tipo === "post") return (await llamar("POST", "me/media", { image_url: urlPublica(e.imagenes[0]), caption: e.texto, ...alt(0) })).id;
   const hijos = [];
@@ -126,7 +142,8 @@ async function contenedor(e) {
 
 async function publicar(e) {
   const id = await contenedor(e);
-  await esperarContenedor(id);
+  // Un vídeo tarda más en procesarse: hasta 6 minutos.
+  await esperarContenedor(id, e.tipo === "reel" ? 90 : 30);
   const { id: mediaId } = await llamar("POST", "me/media_publish", { creation_id: id });
   const { permalink } = await llamar("GET", mediaId, { fields: "permalink" }).catch(() => ({}));
   return { mediaId, enlace: permalink ?? null };
