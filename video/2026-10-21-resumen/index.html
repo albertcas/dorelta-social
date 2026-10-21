@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Dorelta · resumen por categoría (reel)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../src/comun.css">
+<style>
+  /*
+   * Reel 1080 × 1920 del resumen por categoría. Todo lo que se mueve lo decide
+   * render(t), sin animaciones CSS: así cada fotograma es determinista y el
+   * renderizador puede pedirlos uno a uno.
+   *
+   * Las pantallas son capturas reales de la app (staging, club de prueba) a
+   * 390 px; las coordenadas de los toques salen del mismo recorrido
+   * (cajas.json), en píxeles CSS de esa pantalla.
+   */
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--navy); }
+  #reel { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--navy); color: #fff; font-family: Geist, sans-serif; }
+  #reel::after { content: ""; position: absolute; right: -260px; top: 26%; width: 1100px; height: 1100px; border-radius: 50%; background: var(--teal); opacity: 0.11; filter: blur(80px); pointer-events: none; }
+
+  .marca { position: absolute; left: 72px; top: 110px; z-index: 5; display: inline-flex; align-items: center; gap: 14px; }
+  .marca img { width: 56px; height: 56px; border-radius: 28%; background: #fff; padding: 3px; }
+  .marca span { font-size: 36px; font-weight: 600; letter-spacing: -0.02em; }
+  .marca span i { font-style: normal; color: var(--teal); }
+
+  /* Rótulo del paso, arriba */
+  .rotulo { position: absolute; left: 72px; right: 72px; top: 196px; z-index: 5; display: flex; gap: 22px; align-items: flex-start; }
+  .rotulo b { flex: none; width: 64px; height: 64px; border-radius: 99px; background: var(--teal); color: var(--navy); display: grid; place-items: center; font-size: 34px; font-weight: 600; }
+  .rotulo p { margin: 4px 0 0; font-size: 50px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; text-wrap: balance; }
+  .rotulo p em { font-style: normal; color: var(--teal); }
+
+  /* El móvil */
+  #movil { position: absolute; z-index: 3; left: 248px; top: 408px; width: 584px; height: 1236px; border-radius: 70px; background: oklch(0.21 0.02 260); box-shadow: 0 40px 120px rgba(0,0,0,0.45); }
+  #pantalla { position: absolute; left: 12px; top: 12px; width: 560px; height: 1212px; border-radius: 58px; overflow: hidden; background: var(--bg); }
+  #pantalla img { position: absolute; left: 0; top: 0; width: 560px; display: block; }
+  #movil::before { content: ""; position: absolute; top: 22px; left: 50%; transform: translateX(-50%); width: 120px; height: 10px; border-radius: 99px; background: rgba(0,0,0,0.25); z-index: 4; }
+  .resalte { position: absolute; z-index: 2; border: 4px solid var(--teal); border-radius: 16px; box-shadow: 0 0 0 8px color-mix(in oklch, var(--teal) 25%, transparent); pointer-events: none; }
+  .toque { position: absolute; z-index: 3; width: 90px; height: 90px; margin: -45px 0 0 -45px; border-radius: 50%; background: color-mix(in oklch, var(--teal) 45%, transparent); border: 4px solid #fff; pointer-events: none; }
+
+  /* El Excel (los datos son los del fichero descargado de verdad) */
+  #excel { position: absolute; z-index: 6; left: 54px; width: 972px; border-radius: 26px; overflow: hidden; background: #fff; color: #1f2937; box-shadow: 0 40px 140px rgba(0,0,0,0.55); }
+  #excel .barra { display: flex; align-items: center; gap: 16px; padding: 22px 28px; background: #16794b; color: #fff; font-size: 26px; font-weight: 500; }
+  #excel .barra svg { width: 34px; height: 34px; stroke: #fff; fill: none; stroke-width: 2; }
+  #excel table { border-collapse: collapse; width: 100%; table-layout: fixed; font-size: 21px; font-variant-numeric: tabular-nums; }
+  #excel col.fila { width: 46px; } #excel col.nombre { width: 236px; }
+  #excel td, #excel th { border: 1px solid #d9dee5; padding: 9px 10px; white-space: nowrap; overflow: hidden; }
+  #excel th { background: #f1f3f6; color: #6b7280; font-weight: 500; font-size: 19px; text-align: center; }
+  #excel td.n { text-align: right; }
+  #excel tr.cab td { font-weight: 600; background: #eaf6ef; white-space: normal; line-height: 1.15; vertical-align: bottom; }
+  #excel tr.tit td, #excel tr.sub td { overflow: visible; }
+  #excel tr.tit td { font-weight: 600; font-size: 27px; border-color: transparent transparent #d9dee5; }
+  #excel tr.sub td { color: #6b7280; border-color: transparent transparent #d9dee5; }
+
+  /* Portada y cierre */
+  .tarjeta { position: absolute; inset: 0; z-index: 8; display: flex; flex-direction: column; justify-content: center; padding: 0 84px; background: var(--navy); }
+  .tarjeta .etq { align-self: flex-start; display: inline-flex; align-items: center; gap: 14px; padding: 14px 28px; border-radius: 99px; border: 1px solid rgba(255,255,255,0.25); font-size: 30px; font-weight: 500; }
+  .tarjeta .etq::before { content: ""; width: 14px; height: 14px; border-radius: 99px; background: var(--teal); }
+  .tarjeta h1 { margin: 36px 0 0; font-size: 118px; font-weight: 600; letter-spacing: -0.035em; line-height: 1.0; }
+  .tarjeta h1 em { font-style: normal; color: var(--teal); }
+  .tarjeta p { margin: 34px 0 0; font-size: 42px; color: rgba(255,255,255,0.8); line-height: 1.3; }
+  .tarjeta .boton { align-self: flex-start; margin-top: 60px; padding: 30px 48px; border-radius: 99px; background: var(--teal); color: var(--navy); font-size: 56px; font-weight: 600; letter-spacing: -0.02em; }
+  .tarjeta .logo { width: 120px; height: 120px; border-radius: 28%; background: #fff; padding: 6px; margin-bottom: 40px; }
+</style>
+</head>
+<body>
+<div id="reel">
+  <span class="marca"><img src="../../src/assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span>
+  <div class="rotulo" id="rotulo"><b id="num">1</b><p id="texto"></p></div>
+
+  <div id="movil"><div id="pantalla">
+    <img id="img-zona" src="img/1-zona.png" alt="">
+    <img id="img-filtros" src="img/3-filtros.png" alt="">
+    <img id="img-largo" src="img/4-resultados-largo.png" alt="">
+    <div class="resalte" id="resalte"></div>
+    <div class="toque" id="toque"></div>
+  </div></div>
+
+  <div id="excel">
+    <div class="barra"><svg viewBox="0 0 24 24"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg><span id="archivo"></span></div>
+    <table id="hoja"></table>
+  </div>
+
+  <div class="tarjeta" id="portada">
+    <span class="etq">Novedad en Dorelta</span>
+    <h1>Resumen <em>por categoría</em>.</h1>
+    <p>Quién ha entrenado y con qué esfuerzo, entre las fechas que elijas. Y a Excel.</p>
+  </div>
+
+  <div class="tarjeta" id="cierre">
+    <img class="logo" src="../../src/assets/logo-mark.png" alt="">
+    <h1>Ya en la app, <em>en la zona de entrenadores</em>.</h1>
+    <p>Buscamos clubs con grupo adulto para el piloto. Gratis y sin compromiso.</p>
+    <span class="boton">dorelta.es/prueba</span>
+  </div>
+</div>
+
+<script src="excel.js"></script>
+<script>
+  const DURACION = 28;
+  const K = 560 / 390;                 // px CSS de la app → px del reel
+  const ALTO_PANTALLA = 1212;
+  const CAJAS = {
+    enlace: { x: 16, y: 181, w: 210, h: 44 },
+    categoria: { x: 33, y: 278, w: 324, h: 44 },
+    desde: { x: 33, y: 354, w: 324, h: 44 },
+    hasta: { x: 33, y: 430, w: 324, h: 44 },
+    ver: { x: 33, y: 486, w: 324, h: 44 },
+    exportar: { x: 16, y: 643, w: 165, h: 40 },
+  };
+
+  // ---- el Excel, con los datos del fichero real
+  (({ archivo, filas }) => {
+    document.getElementById("archivo").textContent = archivo;
+    const letras = ["", "A", "B", "C", "D", "E", "F"];
+    let html = '<colgroup><col class="fila"><col class="nombre"><col><col><col><col><col></colgroup><tr>' + letras.map((l) => `<th>${l}</th>`).join("") + "</tr>";
+    filas.forEach((f, i) => {
+      const clase = i === 0 ? "tit" : i === 1 ? "sub" : i === 3 ? "cab" : "";
+      html += `<tr class="${clase}"><th>${i + 1}</th>` + f.map((v) => {
+        if (v === null || v === undefined) return "<td></td>";
+        const num = typeof v === "number";
+        return `<td class="${num ? "n" : ""}">${num ? String(v).replace(".", ",") : v}</td>`;
+      }).join("") + "</tr>";
+    });
+    document.getElementById("hoja").innerHTML = html;
+    window.listo = true;
+  })(window.EXCEL);
+
+  // ---- utilidades de tiempo
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const tramo = (t, a, b) => clamp((t - a) / (b - a));
+  const suave = (x) => x * x * (3 - 2 * x);
+  const easeOut = (x) => 1 - Math.pow(1 - x, 3);
+  const mezcla = (a, b, x) => a + (b - a) * x;
+  const $ = (id) => document.getElementById(id);
+
+  const ROTULOS = [
+    [2.6, 7.4, 1, "Entra en la <em>zona de entrenadores</em>"],
+    [7.4, 12.8, 2, "Elige la <em>categoría y las fechas</em>"],
+    [12.8, 19.6, 3, "Realizados, no realizados y <em>esfuerzo</em> de cada remero"],
+    [19.6, 24.6, 4, "Y a <em>Excel</em>, en un toque"],
+  ];
+
+  function resaltar(caja, scroll, opacidad) {
+    const r = $("resalte");
+    if (!caja || opacidad <= 0) { r.style.opacity = 0; return; }
+    r.style.opacity = opacidad;
+    r.style.left = (caja.x - 4) * K + "px";
+    r.style.top = (caja.y - scroll - 4) * K + "px";
+    r.style.width = (caja.w + 8) * K + "px";
+    r.style.height = (caja.h + 8) * K + "px";
+  }
+  function tocar(caja, scroll, x) {
+    const el = $("toque");
+    if (!caja || x <= 0 || x >= 1) { el.style.opacity = 0; return; }
+    const cx = (caja.x + caja.w / 2) * K, cy = (caja.y + caja.h / 2 - scroll) * K;
+    el.style.left = cx + "px"; el.style.top = cy + "px";
+    el.style.opacity = x < 0.3 ? x / 0.3 : 1 - (x - 0.3) / 0.7;
+    el.style.transform = `scale(${0.6 + 0.9 * easeOut(x)})`;
+  }
+
+  window.render = function (t) {
+    // Portada y cierre
+    $("portada").style.opacity = 1 - suave(tramo(t, 2.2, 2.8));
+    $("portada").style.transform = `translateY(${-40 * suave(tramo(t, 2.2, 2.8))}px)`;
+    $("cierre").style.opacity = suave(tramo(t, 24.6, 25.3));
+    $("cierre").style.transform = `translateY(${40 * (1 - suave(tramo(t, 24.6, 25.3)))}px)`;
+
+    // Rótulo del paso
+    const r = ROTULOS.find(([a, b]) => t >= a && t < b);
+    if (r) {
+      const [a, b, n, txt] = r;
+      $("num").textContent = n; $("texto").innerHTML = txt;
+      const op = Math.min(suave(tramo(t, a, a + 0.4)), 1 - suave(tramo(t, b - 0.3, b)));
+      $("rotulo").style.opacity = op;
+      $("rotulo").style.transform = `translateY(${20 * (1 - op)}px)`;
+    } else $("rotulo").style.opacity = 0;
+
+    // Entrada del móvil
+    const entra = easeOut(tramo(t, 2.4, 3.2));
+    $("movil").style.transform = `translateY(${(1 - entra) * 220}px)`;
+    $("movil").style.opacity = entra;
+
+    // Qué pantalla se ve
+    const vZona = 1 - suave(tramo(t, 6.4, 6.9));
+    const vFiltros = suave(tramo(t, 6.4, 6.9)) * (1 - suave(tramo(t, 12.6, 13.0)));
+    const vLargo = suave(tramo(t, 12.6, 13.0));
+    $("img-zona").style.opacity = vZona;
+    $("img-filtros").style.opacity = vFiltros;
+    $("img-largo").style.opacity = vLargo;
+
+    // Desplazamiento de la pantalla larga (px CSS de la app)
+    let scroll = 0;
+    if (t >= 12.6) {
+      scroll = mezcla(0, 560, suave(tramo(t, 13.4, 15.6)));
+      scroll = mezcla(scroll, 1320, suave(tramo(t, 16.4, 18.8)));
+      scroll = mezcla(scroll, 520, suave(tramo(t, 19.4, 20.4)));
+    }
+    $("img-largo").style.transform = `translateY(${-scroll * K}px)`;
+
+    // Resaltes y toques
+    if (t < 6.4) {
+      resaltar(CAJAS.enlace, 0, suave(tramo(t, 4.2, 4.6)) * (1 - suave(tramo(t, 6.0, 6.3))));
+      tocar(CAJAS.enlace, 0, tramo(t, 5.4, 6.1));
+    } else if (t < 12.6) {
+      const paso = t < 9.0 ? "categoria" : t < 10.0 ? "desde" : t < 11.0 ? "hasta" : "ver";
+      resaltar(CAJAS[paso], 0, suave(tramo(t, 7.8, 8.1)) * (1 - suave(tramo(t, 12.0, 12.4))));
+      tocar(CAJAS.ver, 0, tramo(t, 11.6, 12.3));
+    } else {
+      resaltar(CAJAS.exportar, scroll, suave(tramo(t, 20.4, 20.7)) * (1 - suave(tramo(t, 21.6, 21.9))));
+      tocar(CAJAS.exportar, scroll, tramo(t, 20.9, 21.6));
+    }
+
+    // El Excel sube desde abajo
+    const ex = easeOut(tramo(t, 21.5, 22.4));
+    $("excel").style.top = mezcla(1980, 560, ex) + "px";
+    $("excel").style.opacity = tramo(t, 21.5, 21.8);
+    $("excel").style.transform = `scale(${mezcla(0.92, 1, ex)})`;
+  };
+  window.DURACION = DURACION;
+  window.render(0);
+</script>
+</body>
+</html>
