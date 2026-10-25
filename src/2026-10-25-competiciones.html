@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Dorelta · inscripción a competiciones y sección Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+<link rel="stylesheet" href="piezas.css">
+<link rel="stylesheet" href="piloto.css">
+<style>
+  /*
+   * Capturas reales de staging (club de prueba). Los recortes dejan fuera, a
+   * propósito, el remero de prueba «sin responder» y el enlace de invitación
+   * del club, que lleva un token y una URL de localhost.
+   */
+  .piloto .cabecera { display: flex; align-items: center; justify-content: space-between; }
+  .piloto .paso { color: rgba(255,255,255,0.45); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; font-weight: 500; font-size: 24px; }
+  .calles .calle .nombre small { display: block; margin-top: 6px; font-size: 0.66em; font-weight: 400; color: rgba(255,255,255,0.55); letter-spacing: 0; }
+  .calles.novedades .calle .num { color: var(--teal); }
+  .calles.novedades .calle .nombre { color: #fff; }
+  .calles.novedades .calle .estado { border: 1px solid var(--teal); background: var(--teal); color: var(--navy); }
+  .post.piloto .calles.novedades .calle { height: 128px; }
+  .story.piloto .calles.novedades .calle { height: 150px; }
+  .captura.tarjeta { border-radius: 26px; }
+
+  /* Diapositivas con la captura a la derecha */
+  .post.lado .contenido { padding-right: 600px; }
+  .post.lado .cabecera { margin-right: -528px; }
+  .post.lado .etiqueta { margin-top: auto; font-size: 21px; }
+  .post.lado h1 { margin-top: 22px; font-size: 54px; line-height: 1.04; }
+  .post.lado .subtitulo { margin-top: 22px; font-size: 25px; }
+  .post.lado .accion { margin-top: auto; padding-top: 40px; }
+  .post.lado .accion .boton { padding: 20px 30px; font-size: 30px; }
+  .post.lado .captura { position: absolute; z-index: 3; right: 60px; top: 50%; transform: translateY(-50%); }
+
+  .story.piloto h1 { font-size: 92px; }
+  .story.piloto .captura { margin-top: 44px; align-self: center; }
+  .story.piloto .accion { margin-top: auto; }
+  .story.piloto .extra { margin-top: 22px; color: rgba(255,255,255,0.6); font-size: 28px; }
+</style>
+</head>
+<body>
+
+<div class="pieza post piloto" data-salida="post-1.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">1 / 4 · Desliza →</span></div>
+    <span class="etiqueta">Novedades en Dorelta</span>
+    <h1>Inscripción a regatas y <em>un sitio para el club</em>.</h1>
+    <ol class="calles novedades">
+      <li class="calle"><span class="num">1</span><span class="nombre">Me apunto o no asistiré<small>Para el remero</small></span><span class="estado">Nuevo</span></li>
+      <li class="calle"><span class="num">2</span><span class="nombre">Quién va y quién no<small>Para el entrenador</small></span><span class="estado">Nuevo</span></li>
+      <li class="calle"><span class="num">3</span><span class="nombre">Sección Club<small>Para el administrador</small></span><span class="estado">Nuevo</span></li>
+    </ol>
+    <div class="accion"><span class="boton">dorelta.es/prueba</span><span class="nota">Desliza →</span></div>
+  </div>
+</div>
+
+<div class="pieza post piloto lado" data-salida="post-2.png">
+  <div class="captura tarjeta" style="--ancho: 480px; --iw: 1170; --x: 75; --y: 720; --w: 1035; --h: 1620"><img src="assets/competicion-remero.png" alt=""></div>
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">2 / 4</span></div>
+    <span class="etiqueta">1 · Para el remero</span>
+    <h1>Me apunto, o <em>no voy y por qué</em>.</h1>
+    <p class="subtitulo">En cada competición de su categoría, hasta el mismo día. Si no va, puede dejar el motivo y una nota para su entrenador.</p>
+    <div class="accion"><span class="boton">dorelta.es/prueba</span></div>
+  </div>
+</div>
+
+<div class="pieza post piloto lado" data-salida="post-3.png">
+  <div class="captura tarjeta" style="--ancho: 480px; --iw: 1170; --x: 75; --y: 900; --w: 1035; --h: 1395"><img src="assets/competicion-entrenador.png" alt=""></div>
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">3 / 4</span></div>
+    <span class="etiqueta">2 · Para el entrenador</span>
+    <h1>Quién va, quién no y <em>por qué</em>.</h1>
+    <p class="subtitulo">«7 van · 2 no van · 1 sin responder» en cada competición, y la lista por categoría con los motivos.</p>
+    <div class="accion"><span class="boton">dorelta.es/prueba</span></div>
+  </div>
+</div>
+
+<div class="pieza post piloto lado" data-salida="post-4.png">
+  <div class="captura tarjeta" style="--ancho: 480px; --iw: 1170; --x: 75; --y: 600; --w: 1035; --h: 1275"><img src="assets/club-ajustes.png" alt=""></div>
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">4 / 4</span></div>
+    <span class="etiqueta">3 · Para el administrador</span>
+    <h1>Los datos del club, <em>en su sitio</em>.</h1>
+    <p class="subtitulo">Nueva sección «Club»: nombre, dirección y escudo, y el enlace para invitar a los remeros.</p>
+    <div class="accion"><span class="boton">dorelta.es/prueba</span></div>
+  </div>
+</div>
+
+<div class="pieza story piloto" data-salida="story.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span></div>
+    <span class="etiqueta">Novedad · Competiciones</span>
+    <h1>¿Quién va a la regata? <em>Ya lo sabes</em>.</h1>
+    <div class="captura tarjeta" style="--ancho: 600px; --iw: 1170; --x: 75; --y: 900; --w: 1035; --h: 1395"><img src="assets/competicion-entrenador.png" alt=""></div>
+    <p class="extra">Y nueva sección «Club» para los datos y el escudo.</p>
+    <div class="accion"><span class="boton">dorelta.es/prueba</span><span class="nota">Buscamos clubs<br>para el piloto</span></div>
+  </div>
+</div>
+
+</body>
+</html>
