@@ -66,5 +66,31 @@
     "video": "video/2026-10-21-resumen/reel.mp4",
     "portadaMs": 1000,
     "texto": "Novedad en Dorelta: el resumen por categoría.\n\nDesde la zona de entrenadores eliges una categoría y unas fechas, y ves a cada remero de un vistazo: entrenos realizados, no realizados y su esfuerzo medio, máximo y mínimo. Lo ordenas como quieras y, si lo necesitas para planificar o para la directiva, lo exportas a Excel en un toque.\n\nSeguimos buscando clubs con grupo adulto para el piloto: dorelta.es/prueba (enlace en la bio).\n\n#remo #rowing #clubderemo #entrenadorderemo #remoolimpico"
+  },
+  {
+    "id": "2026-10-25-competiciones-carrusel",
+    "cuando": "2026-10-25T20:09:00+01:00",
+    "tipo": "carrusel",
+    "imagenes": [
+      "posts/2026-10-25-competiciones/post-1.jpg",
+      "posts/2026-10-25-competiciones/post-2.jpg",
+      "posts/2026-10-25-competiciones/post-3.jpg",
+      "posts/2026-10-25-competiciones/post-4.jpg"
+    ],
+    "texto": "Novedades en Dorelta: inscripción a competiciones y sección Club.\n\nPara el remero: en cada competición de su categoría elige «Me apunto» o «No asistiré», hasta el mismo día. Si no va, puede dejar el motivo y una nota para su entrenador.\n\nPara el entrenador: cada competición le dice cuántos van, cuántos no y cuántos faltan por responder, con la lista por categoría y los motivos. Se acabó preguntar uno a uno por el grupo.\n\nPara el administrador: una sección nueva, «Club», con el nombre, la dirección, el escudo y el enlace para invitar a los remeros.\n\nSeguimos buscando clubs con grupo adulto para el piloto: dorelta.es/prueba (enlace en la bio).\n\n#remo #rowing #clubderemo #entrenadorderemo #remoolimpico",
+    "alt": [
+      "Tres filas numeradas, todas marcadas como nuevas: «Me apunto o no asistiré», para el remero; «Quién va y quién no», para el entrenador; y «Sección Club», para el administrador. Encima, el texto: «Inscripción a regatas y un sitio para el club».",
+      "Tarjeta de la competición «Regata de otoño · banco móvil» vista por un remero, con «No asistiré» marcado, el motivo «Trabajo» y la nota «Me toca turno ese domingo». Al lado, el texto: «Me apunto, o no voy y por qué».",
+      "La misma competición vista por el entrenador: «7 van · 2 no van · 1 sin responder» y la lista de inscripciones de Senior A con los motivos de quienes no van. Al lado, el texto: «Quién va, quién no y por qué».",
+      "Sección «Club» de Dorelta con el escudo, el nombre del club, la dirección y el botón «Guardar». Al lado, el texto: «Los datos del club, en su sitio»."
+    ]
+  },
+  {
+    "id": "2026-10-25-competiciones-story",
+    "cuando": "2026-10-25T20:10:00+01:00",
+    "tipo": "story",
+    "imagenes": [
+      "posts/2026-10-25-competiciones/story.jpg"
+    ]
   }
 ]
