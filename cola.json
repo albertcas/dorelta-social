@@ -92,5 +92,13 @@
     "imagenes": [
       "posts/2026-10-25-competiciones/story.jpg"
     ]
+  },
+  {
+    "id": "2026-10-26-novedades-reel",
+    "cuando": "2026-10-26T13:07:00+01:00",
+    "tipo": "reel",
+    "video": "video/2026-10-26-novedades/reel.mp4",
+    "portadaMs": 1500,
+    "texto": "Menos tiempo planificando, más en el agua. Novedades en Dorelta:\n\n1. Copiar semana: la semana entera, a la semana que elijas, como borradores. Lo de la semana de destino no se toca.\n2. Publicar borradores: todos los de la semana, de una vez y con el aviso a los remeros.\n3. Carga semanal: esfuerzo × minutos de cada remero, semana a semana, con la marca «Semana alta» cuando se dispara.\n4. Invitaciones con vista previa: al pegar el enlace en WhatsApp sale el club, para que nadie dude de qué es.\n\nSeguimos buscando clubs con grupo adulto para el piloto: dorelta.es/prueba (enlace en la bio).\n\n#remo #rowing #clubderemo #entrenadorderemo #remoolimpico"
   }
 ]
