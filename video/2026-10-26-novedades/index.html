@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Dorelta · novedades del 26 de octubre (reel)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../src/comun.css">
+<style>
+  /*
+   * Reel 1080 × 1920: copiar semana y publicar borradores (#111), carga semanal
+   * (#112) y la vista previa del enlace de invitación en WhatsApp (#110).
+   * Capturas reales de staging (club de prueba) a 390 px; la imagen de la vista
+   * previa es la que genera la app (opengraph-image). render(t) decide todo.
+   */
+  html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--navy); }
+  #reel { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--navy); color: #fff; font-family: Geist, sans-serif; }
+  #reel::after { content: ""; position: absolute; right: -260px; top: 26%; width: 1100px; height: 1100px; border-radius: 50%; background: var(--teal); opacity: 0.11; filter: blur(80px); pointer-events: none; }
+
+  .marca { position: absolute; left: 72px; top: 110px; z-index: 5; display: inline-flex; align-items: center; gap: 14px; }
+  .marca img { width: 56px; height: 56px; border-radius: 28%; background: #fff; padding: 3px; }
+  .marca span { font-size: 36px; font-weight: 600; letter-spacing: -0.02em; }
+  .marca span i { font-style: normal; color: var(--teal); }
+
+  .rotulo { position: absolute; left: 72px; right: 72px; top: 196px; z-index: 5; display: flex; gap: 22px; align-items: flex-start; }
+  .rotulo b { flex: none; width: 64px; height: 64px; border-radius: 99px; background: var(--teal); color: var(--navy); display: grid; place-items: center; font-size: 34px; font-weight: 600; }
+  .rotulo p { margin: 4px 0 0; font-size: 50px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.1; text-wrap: balance; }
+  .rotulo p em { font-style: normal; color: var(--teal); }
+
+  #movil { position: absolute; z-index: 3; left: 248px; top: 408px; width: 584px; height: 1236px; border-radius: 70px; background: oklch(0.21 0.02 260); box-shadow: 0 40px 120px rgba(0,0,0,0.45); }
+  #pantalla { position: absolute; left: 12px; top: 12px; width: 560px; height: 1212px; border-radius: 58px; overflow: hidden; background: var(--bg); }
+  #pantalla img { position: absolute; left: 0; top: 0; width: 560px; display: block; opacity: 0; }
+  #movil::before { content: ""; position: absolute; top: 22px; left: 50%; transform: translateX(-50%); width: 120px; height: 10px; border-radius: 99px; background: rgba(0,0,0,0.25); z-index: 4; }
+  .resalte { position: absolute; z-index: 2; border: 4px solid var(--teal); border-radius: 16px; box-shadow: 0 0 0 8px color-mix(in oklch, var(--teal) 25%, transparent); pointer-events: none; opacity: 0; }
+  .toque { position: absolute; z-index: 3; width: 90px; height: 90px; margin: -45px 0 0 -45px; border-radius: 50%; background: color-mix(in oklch, var(--teal) 45%, transparent); border: 4px solid #fff; pointer-events: none; opacity: 0; }
+
+  /* La conversación de WhatsApp: una burbuja genérica, sin marca de nadie */
+  #chat { position: absolute; z-index: 6; left: 60px; right: 60px; top: 480px; opacity: 0; }
+  #chat .fondo { border-radius: 40px; padding: 48px 40px; background: #0b141a; box-shadow: 0 40px 140px rgba(0,0,0,0.5); }
+  #chat .cab { display: flex; align-items: center; gap: 18px; padding-bottom: 30px; margin-bottom: 34px; border-bottom: 1px solid rgba(255,255,255,0.1); color: #e9edef; font-size: 30px; font-weight: 600; }
+  #chat .cab i { width: 64px; height: 64px; border-radius: 50%; background: #2a3942; display: grid; place-items: center; font-style: normal; font-size: 26px; color: #aebac1; }
+  #chat .cab small { display: block; font-size: 22px; font-weight: 400; color: #8696a0; }
+  .burbuja { margin-left: auto; width: 760px; border-radius: 22px 6px 22px 22px; background: #005c4b; padding: 10px; color: #e9edef; }
+  .burbuja .vista { border-radius: 14px; overflow: hidden; background: rgba(0,0,0,0.22); }
+  .burbuja .vista img { display: block; width: 100%; }
+  .burbuja .vista div { padding: 18px 22px 20px; }
+  .burbuja .vista b { display: block; font-size: 28px; }
+  .burbuja .vista p { margin: 6px 0 0; font-size: 23px; color: rgba(233,237,239,0.75); line-height: 1.3; }
+  .burbuja .vista small { display: block; margin-top: 8px; font-size: 21px; color: rgba(233,237,239,0.55); }
+  .burbuja .msg { padding: 16px 12px 6px; font-size: 27px; line-height: 1.35; }
+  .burbuja .msg u { color: #53bdeb; text-decoration: none; }
+  .burbuja .hora { text-align: right; font-size: 20px; color: rgba(233,237,239,0.6); padding: 0 8px 4px; }
+
+  .tarjeta { position: absolute; inset: 0; z-index: 8; display: flex; flex-direction: column; justify-content: center; padding: 0 84px; background: var(--navy); }
+  .tarjeta .etq { align-self: flex-start; display: inline-flex; align-items: center; gap: 14px; padding: 14px 28px; border-radius: 99px; border: 1px solid rgba(255,255,255,0.25); font-size: 30px; font-weight: 500; }
+  .tarjeta .etq::before { content: ""; width: 14px; height: 14px; border-radius: 99px; background: var(--teal); }
+  .tarjeta h1 { margin: 36px 0 0; font-size: 108px; font-weight: 600; letter-spacing: -0.035em; line-height: 1.02; }
+  .tarjeta h1 em { font-style: normal; color: var(--teal); }
+  .tarjeta p { margin: 34px 0 0; font-size: 42px; color: rgba(255,255,255,0.8); line-height: 1.3; }
+  .tarjeta .boton { align-self: flex-start; margin-top: 60px; padding: 30px 48px; border-radius: 99px; background: var(--teal); color: var(--navy); font-size: 56px; font-weight: 600; letter-spacing: -0.02em; }
+  .tarjeta .logo { width: 120px; height: 120px; border-radius: 28%; background: #fff; padding: 6px; margin-bottom: 40px; }
+  .tarjeta ol { margin: 50px 0 0; padding: 0; list-style: none; display: grid; gap: 22px; }
+  .tarjeta ol li { display: flex; gap: 22px; align-items: center; font-size: 40px; font-weight: 500; }
+  .tarjeta ol li b { width: 56px; height: 56px; border-radius: 99px; background: var(--teal); color: var(--navy); display: grid; place-items: center; font-size: 28px; }
+</style>
+</head>
+<body>
+<div id="reel">
+  <span class="marca"><img src="../../src/assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span>
+  <div class="rotulo" id="rotulo"><b id="num">1</b><p id="texto"></p></div>
+
+  <div id="movil"><div id="pantalla">
+    <img id="i1" src="img/1-calendario.png" alt="">
+    <img id="i2" src="img/2-dialogo.png" alt="">
+    <img id="i3" src="img/3-destino.png" alt="">
+    <img id="i4" src="img/4-confirmar-publicar.png" alt="">
+    <img id="i5" src="img/5-publicados.png" alt="">
+    <img id="i7" src="img/7-ficha.png" alt="">
+    <div class="resalte" id="resalte"></div>
+    <div class="toque" id="toque"></div>
+  </div></div>
+
+  <div id="chat"><div class="fondo">
+    <div class="cab"><i>CR</i><div>Club Referencia · Senior A<small>grupo</small></div></div>
+    <div class="burbuja">
+      <div class="vista"><img src="img/8-og.png" alt=""><div><b>Únete a Club Referencia</b><p>Te han invitado al club en Dorelta, donde verás los entrenos y dirás si vas. Abre el enlace y pide entrar.</p><small>dorelta.es</small></div></div>
+      <div class="msg">¡Ya estamos en Dorelta! Entrad por aquí 👉 <u>dorelta.es/invitacion/…</u></div>
+      <div class="hora">19:02</div>
+    </div>
+  </div></div>
+
+  <div class="tarjeta" id="portada">
+    <span class="etq">Novedades en Dorelta</span>
+    <h1>Menos tiempo planificando, <em>más en el agua</em>.</h1>
+    <ol>
+      <li><b>1</b>Copiar la semana</li>
+      <li><b>2</b>Publicar los borradores de una vez</li>
+      <li><b>3</b>Carga semanal de cada remero</li>
+      <li><b>4</b>Invitaciones con vista previa</li>
+    </ol>
+  </div>
+
+  <div class="tarjeta" id="cierre">
+    <img class="logo" src="../../src/assets/logo-mark.png" alt="">
+    <h1>Ya en la app <em>de los clubs del piloto</em>.</h1>
+    <p>Buscamos clubs con grupo adulto para el piloto. Gratis y sin compromiso.</p>
+    <span class="boton">dorelta.es/prueba</span>
+  </div>
+</div>
+
+<script>
+  const DURACION = 36;
+  const K = 560 / 390;
+  const CAJAS = {
+    copiar: { x: 16, y: 265, w: 156, h: 44 },
+    destino: { x: 36, y: 320, w: 318, h: 44 },
+    confirmar: { x: 32, y: 580, w: 326, h: 44 },
+    publicar: { x: 16, y: 213, w: 208, h: 44 },
+    si: { x: 51, y: 480, w: 288, h: 44 },
+  };
+  const ROTULOS = [
+    [3.0, 13.6, 1, "Copia la <em>semana entera</em>, como borradores"],
+    [13.6, 20.2, 2, "Y publícalos <em>de una vez</em>"],
+    [20.2, 27.4, 3, "La <em>carga semanal</em> de cada remero"],
+    [27.4, 32.4, 4, "Invitaciones con <em>vista previa</em> en WhatsApp"],
+  ];
+  window.listo = true;
+
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const tramo = (t, a, b) => clamp((t - a) / (b - a));
+  const suave = (x) => x * x * (3 - 2 * x);
+  const easeOut = (x) => 1 - Math.pow(1 - x, 3);
+  const mezcla = (a, b, x) => a + (b - a) * x;
+  const $ = (id) => document.getElementById(id);
+
+  function resaltar(caja, scroll, op) {
+    const r = $("resalte");
+    if (!caja || op <= 0) { r.style.opacity = 0; return; }
+    r.style.opacity = op;
+    r.style.left = (caja.x - 4) * K + "px"; r.style.top = (caja.y - scroll - 4) * K + "px";
+    r.style.width = (caja.w + 8) * K + "px"; r.style.height = (caja.h + 8) * K + "px";
+  }
+  function tocar(caja, scroll, x) {
+    const el = $("toque");
+    if (!caja || x <= 0 || x >= 1) { el.style.opacity = 0; return; }
+    el.style.left = (caja.x + caja.w / 2) * K + "px"; el.style.top = (caja.y + caja.h / 2 - scroll) * K + "px";
+    el.style.opacity = x < 0.3 ? x / 0.3 : 1 - (x - 0.3) / 0.7;
+    el.style.transform = `scale(${0.6 + 0.9 * easeOut(x)})`;
+  }
+  // Una pantalla aparece en [a, b) con fundidos cortos.
+  const ventana = (t, a, b, f = 0.35) => (t < a - f || t > b + f ? 0 : Math.min(suave(tramo(t, a - f, a)), 1 - suave(tramo(t, b, b + f))));
+
+  window.render = function (t) {
+    $("portada").style.opacity = 1 - suave(tramo(t, 2.5, 3.1));
+    $("portada").style.transform = `translateY(${-40 * suave(tramo(t, 2.5, 3.1))}px)`;
+    $("cierre").style.opacity = suave(tramo(t, 32.4, 33.1));
+    $("cierre").style.transform = `translateY(${40 * (1 - suave(tramo(t, 32.4, 33.1)))}px)`;
+
+    const r = ROTULOS.find(([a, b]) => t >= a && t < b);
+    if (r) {
+      const [a, b, n, txt] = r;
+      $("num").textContent = n; $("texto").innerHTML = txt;
+      const op = Math.min(suave(tramo(t, a, a + 0.4)), 1 - suave(tramo(t, b - 0.3, b)));
+      $("rotulo").style.opacity = op; $("rotulo").style.transform = `translateY(${20 * (1 - op)}px)`;
+    } else $("rotulo").style.opacity = 0;
+
+    // El móvil entra al principio y se va antes de WhatsApp
+    const entra = easeOut(tramo(t, 2.7, 3.5)), sale = suave(tramo(t, 27.0, 27.6));
+    $("movil").style.transform = `translateY(${(1 - entra) * 220 + sale * 260}px)`;
+    $("movil").style.opacity = entra * (1 - sale);
+
+    // Pantallas
+    $("i1").style.opacity = t < 8.4 ? 1 : ventana(t, 0, 8.4);
+    $("i2").style.opacity = ventana(t, 8.4, 13.4);
+    $("i3").style.opacity = ventana(t, 13.4, 16.2);
+    $("i4").style.opacity = ventana(t, 16.2, 18.2);
+    $("i5").style.opacity = ventana(t, 18.2, 20.2);
+    $("i7").style.opacity = t > 20.2 ? suave(tramo(t, 19.9, 20.3)) : 0;
+    const scroll = mezcla(0, 160, suave(tramo(t, 21.0, 22.2))) + mezcla(0, 520, suave(tramo(t, 24.2, 26.4)));
+    $("i7").style.transform = `translateY(${-scroll * K}px)`;
+
+    // Resaltes y toques
+    if (t < 8.4) { resaltar(CAJAS.copiar, 0, suave(tramo(t, 5.0, 5.4)) * (1 - suave(tramo(t, 7.6, 8.0)))); tocar(CAJAS.copiar, 0, tramo(t, 6.6, 7.4)); }
+    else if (t < 13.4) {
+      const caja = t < 11.4 ? CAJAS.destino : CAJAS.confirmar;
+      resaltar(caja, 0, suave(tramo(t, 9.2, 9.6)) * (1 - suave(tramo(t, 12.8, 13.2))));
+      tocar(CAJAS.confirmar, 0, tramo(t, 12.2, 13.0));
+    } else if (t < 16.2) { resaltar(CAJAS.publicar, 0, suave(tramo(t, 14.2, 14.6)) * (1 - suave(tramo(t, 15.7, 16.0)))); tocar(CAJAS.publicar, 0, tramo(t, 15.2, 16.0)); }
+    else if (t < 18.2) { resaltar(CAJAS.si, 0, suave(tramo(t, 16.6, 16.9)) * (1 - suave(tramo(t, 17.7, 18.0)))); tocar(CAJAS.si, 0, tramo(t, 17.2, 18.0)); }
+    else { resaltar(null); tocar(null); }
+
+    // WhatsApp
+    const chat = easeOut(tramo(t, 27.5, 28.3));
+    $("chat").style.opacity = tramo(t, 27.5, 27.9) * (1 - suave(tramo(t, 32.2, 32.5)));
+    $("chat").style.transform = `translateY(${(1 - chat) * 180}px)`;
+  };
+  window.DURACION = DURACION;
+  window.render(0);
+</script>
+</body>
+</html>
