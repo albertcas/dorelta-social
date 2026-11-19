@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Dorelta · alineaciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="comun.css">
+<link rel="stylesheet" href="piezas.css">
+<link rel="stylesheet" href="piloto.css">
+<style>
+  /*
+   * Alineaciones (#129, D82). Capturas reales de staging (club de prueba) y,
+   * en la última diapositiva, la imagen tal cual la genera la app para
+   * compartir: es lo que el entrenador manda al grupo.
+   */
+  .piloto .cabecera { display: flex; align-items: center; justify-content: space-between; }
+  .piloto .paso { color: rgba(255,255,255,0.45); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; font-weight: 500; font-size: 24px; }
+  .calles .calle .nombre small { display: block; margin-top: 6px; font-size: 0.66em; font-weight: 400; color: rgba(255,255,255,0.55); letter-spacing: 0; }
+  .calles.pasos .calle .num { color: var(--teal); }
+  .calles.pasos .calle .nombre { color: #fff; }
+  .post.piloto .calles.pasos .calle { height: 128px; }
+  .captura.tarjeta { border-radius: 26px; }
+
+  /* Diapositiva 1: la imagen que se comparte, inclinada detrás del texto */
+  .post.portada .muestra { position: absolute; z-index: 1; right: -70px; top: 190px; width: 470px; border-radius: 22px; overflow: hidden; transform: rotate(6deg); box-shadow: 0 40px 120px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.12); }
+  .post.portada .muestra img { display: block; width: 100%; }
+  .post.portada h1 { margin-top: 30px; font-size: 76px; max-width: 560px; line-height: 1.02; }
+  .post.portada .subtitulo { margin-top: 24px; font-size: 28px; max-width: 520px; }
+
+  /* Diapositiva 2: las dos familias de botes */
+  .post.botes h1 { margin-top: 26px; font-size: 64px; line-height: 1.04; }
+  .post.botes .subtitulo { margin-top: 20px; font-size: 27px; max-width: 900px; }
+  .dos { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .dos figure { margin: 0; display: grid; gap: 14px; }
+  .dos figcaption { font-size: 24px; font-weight: 500; color: var(--teal); }
+
+  /* Diapositiva 3: el bote con la tripulación, a la derecha */
+  .post.lado .contenido { padding-right: 610px; }
+  .post.lado .cabecera { margin-right: -528px; }
+  .post.lado .etiqueta { margin-top: auto; font-size: 21px; }
+  .post.lado h1 { margin-top: 22px; font-size: 54px; line-height: 1.04; }
+  .post.lado .subtitulo { margin-top: 22px; font-size: 25px; }
+  .post.lado .leyenda { margin-top: 26px; display: grid; gap: 12px; font-size: 23px; color: rgba(255,255,255,0.8); }
+  .post.lado .leyenda span { display: inline-flex; align-items: center; gap: 12px; }
+  .post.lado .leyenda b { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-size: 18px; color: #fff; }
+  .post.lado .accion { margin-top: auto; padding-top: 40px; }
+  .post.lado .accion .boton { padding: 20px 30px; font-size: 30px; }
+  .post.lado .captura { position: absolute; z-index: 3; right: 60px; top: 50%; transform: translateY(-50%); }
+
+  /* Diapositiva 4: la imagen de la app, sin tocar */
+  .post.imagen { background: none; }
+  .post.imagen::after { display: none; }
+  .post.imagen img { display: block; width: 1080px; height: 1350px; }
+
+  /* Historias */
+  .story.piloto h1 { font-size: 92px; }
+  .story.piloto .subtitulo { margin-top: 26px; font-size: 36px; }
+  .story.piloto .captura { margin-top: 44px; align-self: center; }
+  .story.piloto .accion { margin-top: auto; }
+  .story.comparte .muestra { margin-top: 40px; align-self: center; width: 700px; border-radius: 24px; overflow: hidden; box-shadow: 0 40px 120px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.12); }
+  .story.comparte .muestra img { display: block; width: 100%; }
+</style>
+</head>
+<body>
+
+<div class="pieza post piloto portada" data-salida="post-1.png">
+  <div class="muestra sangrado"><img src="assets/alineacion-imagen.png" alt=""></div>
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">1 / 4 · Desliza →</span></div>
+    <span class="etiqueta" style="margin-top: 56px">Novedad · Alineaciones</span>
+    <h1>La tripulación, <em>en el bote</em>.</h1>
+    <p class="subtitulo">Monta la alineación de cada regata y mándala al grupo como imagen.</p>
+    <ol class="calles pasos" style="margin-top: auto">
+      <li class="calle"><span class="num">1</span><span class="nombre">Elige la embarcación<small>Banco móvil y banco fijo</small></span></li>
+      <li class="calle"><span class="num">2</span><span class="nombre">Toca un asiento y elige quién va<small>Babor y estribor a la vista</small></span></li>
+      <li class="calle"><span class="num">3</span><span class="nombre">Compártela como imagen<small>Lista para WhatsApp</small></span></li>
+    </ol>
+  </div>
+</div>
+
+<div class="pieza post piloto botes" data-salida="post-2.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">2 / 4</span></div>
+    <span class="etiqueta" style="margin-top: 48px; font-size: 21px">1 · La embarcación</span>
+    <h1>Del 1x al 8+, <em>y también trainera</em>.</h1>
+    <p class="subtitulo">Banco móvil (1x, 2x, 2-, 4x, 4x+, 4-, 4+, 8+ y los de mar) y banco fijo (trainera, trainerilla, batel y llaüt).</p>
+    <div class="dos">
+      <figure><figcaption>Banco móvil</figcaption><div class="captura tarjeta" style="--ancho: 456px; --iw: 1170; --x: 30; --y: 655; --w: 1110; --h: 1210"><img src="assets/alineacion-movil.png" alt=""></div></figure>
+      <figure><figcaption>Banco fijo</figcaption><div class="captura tarjeta" style="--ancho: 456px; --iw: 1170; --x: 30; --y: 655; --w: 1110; --h: 1210"><img src="assets/alineacion-fijo.png" alt=""></div></figure>
+    </div>
+  </div>
+</div>
+
+<div class="pieza post piloto lado" data-salida="post-3.png">
+  <div class="captura tarjeta" style="--ancho: 500px; --iw: 1170; --x: 0; --y: 1620; --w: 1170; --h: 2080"><img src="assets/alineacion-bote.png" alt=""></div>
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span><span class="paso">3 / 4</span></div>
+    <span class="etiqueta">2 · Los asientos</span>
+    <h1>Toca un asiento y <em>elige quién va</em>.</h1>
+    <p class="subtitulo">Con buscador y filtro por categoría. Si alguien ya iba en otro asiento, se cambian de sitio.</p>
+    <div class="leyenda">
+      <span><b style="background: oklch(0.62 0.17 25)">B</b>Babor</span>
+      <span><b style="background: oklch(0.6 0.13 155)">E</b>Estribor</span>
+    </div>
+    <div class="accion"><span class="boton">dorelta.es/prueba</span></div>
+  </div>
+</div>
+
+<div class="pieza post imagen" data-salida="post-4.png">
+  <img src="assets/alineacion-imagen.png" alt="">
+</div>
+
+<div class="pieza story piloto" data-salida="story-1.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span></div>
+    <span class="etiqueta">Novedad · Alineaciones</span>
+    <h1>La tripulación, <em>en el bote</em>.</h1>
+    <p class="subtitulo">Elige la embarcación, toca un asiento y coloca a cada remero.</p>
+    <div class="captura tarjeta" style="--ancho: 480px; --iw: 1170; --x: 0; --y: 1620; --w: 1170; --h: 2080"><img src="assets/alineacion-bote.png" alt=""></div>
+    <div class="accion"><span class="boton">dorelta.es/prueba</span><span class="nota">Banco móvil<br>y banco fijo</span></div>
+  </div>
+</div>
+
+<div class="pieza story piloto comparte" data-salida="story-2.png">
+  <div class="contenido">
+    <div class="cabecera"><span class="marca"><img src="assets/logo-mark.png" alt=""><span>Dor<i>elta</i></span></span></div>
+    <span class="etiqueta">Y se comparte así</span>
+    <h1>Una imagen <em>para el grupo</em>.</h1>
+    <div class="muestra"><img src="assets/alineacion-imagen.png" alt=""></div>
+    <div class="accion"><span class="boton">dorelta.es/prueba</span><span class="nota">Buscamos clubs<br>para el piloto</span></div>
+  </div>
+</div>
+
+</body>
+</html>
