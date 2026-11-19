@@ -100,5 +100,39 @@
     "video": "video/2026-10-26-novedades/reel.mp4",
     "portadaMs": 1500,
     "texto": "Menos tiempo planificando, más en el agua. Novedades en Dorelta:\n\n1. Copiar semana: la semana entera, a la semana que elijas, como borradores. Lo de la semana de destino no se toca.\n2. Publicar borradores: todos los de la semana, de una vez y con el aviso a los remeros.\n3. Carga semanal: esfuerzo × minutos de cada remero, semana a semana, con la marca «Semana alta» cuando se dispara.\n4. Invitaciones con vista previa: al pegar el enlace en WhatsApp sale el club, para que nadie dude de qué es.\n\nSeguimos buscando clubs con grupo adulto para el piloto: dorelta.es/prueba (enlace en la bio).\n\n#remo #rowing #clubderemo #entrenadorderemo #remoolimpico"
+  },
+  {
+    "id": "2026-11-19-alineaciones-carrusel",
+    "cuando": "2026-11-19T12:12:00+01:00",
+    "tipo": "carrusel",
+    "imagenes": [
+      "posts/2026-11-19-alineaciones/post-1.jpg",
+      "posts/2026-11-19-alineaciones/post-2.jpg",
+      "posts/2026-11-19-alineaciones/post-3.jpg",
+      "posts/2026-11-19-alineaciones/post-4.jpg"
+    ],
+    "texto": "Novedad en Dorelta: alineaciones.\n\nDesde la zona de entrenadores eliges la embarcación (del 1x al 8+, o trainera, trainerilla, batel y llaüt), tocas cada asiento y eliges quién va, con babor y estribor a la vista. Si alguien ya iba en otro asiento, se cambian de sitio.\n\nY cuando la tienes, la compartes como imagen: la última foto del carrusel es exactamente lo que llega al grupo del equipo.\n\nSeguimos buscando clubs con grupo adulto para el piloto: dorelta.es/prueba (enlace en la bio).\n\n#remo #rowing #clubderemo #entrenadorderemo #remoolimpico #trainera",
+    "alt": [
+      "La imagen de una alineación de Dorelta, inclinada, junto al texto «La tripulación, en el bote» y tres pasos: elige la embarcación, toca un asiento y elige quién va, compártela como imagen.",
+      "Dos capturas de la pantalla «Nueva alineación»: la pestaña de banco móvil (1x, 2x, 2-, 4x…) y la de banco fijo (trainera, trainerilla, batel, llaüt). Encima, el texto: «Del 1x al 8+, y también trainera».",
+      "El editor de alineaciones con un ocho visto desde arriba, de proa a popa, y un remero en cada asiento marcado como babor o estribor. Al lado, el texto: «Toca un asiento y elige quién va».",
+      "Imagen para compartir de la alineación «Regata de otoño · 8+ Senior», domingo 22 de noviembre: el bote con los ocho remeros a babor y estribor y la timonel."
+    ]
+  },
+  {
+    "id": "2026-11-19-alineaciones-story-1",
+    "cuando": "2026-11-19T12:13:00+01:00",
+    "tipo": "story",
+    "imagenes": [
+      "posts/2026-11-19-alineaciones/story-1.jpg"
+    ]
+  },
+  {
+    "id": "2026-11-19-alineaciones-story-2",
+    "cuando": "2026-11-19T12:14:00+01:00",
+    "tipo": "story",
+    "imagenes": [
+      "posts/2026-11-19-alineaciones/story-2.jpg"
+    ]
   }
 ]
